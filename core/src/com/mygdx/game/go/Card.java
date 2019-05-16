@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
+import com.mygdx.game.SoundManager;
 import com.mygdx.game.hud.GameStats;
 
 public class Card extends GameObject {
@@ -44,6 +45,7 @@ public class Card extends GameObject {
     public void use(GameStats stats) {
         stats.addMoney(money);
         stats.addPollution(pollution);
+        SoundManager.getInstance().s.play();
     }
 
     @Override
