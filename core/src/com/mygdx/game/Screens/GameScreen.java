@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.game.Controllers.WorldController;
+import com.mygdx.game.Controllers.WorldRenderer;
 
 public class GameScreen implements Screen {
 
@@ -20,9 +22,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        controller = new WorldController(game);
+        controller = WorldController.getInstance();
         renderer = new WorldRenderer(controller);
-        controller.camera = renderer.camera;
+        controller.camera = controller.camera;
 
     }
 

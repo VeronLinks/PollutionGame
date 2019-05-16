@@ -11,7 +11,7 @@ public class SoundManager
 
     private SoundManager()
     {
-        click = Gdx.audio.newSound(Gdx.files.internal("Sounds/Click.wav"));
+        click = Gdx.audio.newSound(Gdx.files.internal("Sounds/Click_1.wav"));
         badCard1 = Gdx.audio.newSound(Gdx.files.internal("Sounds/Chainsaw_1.wav"));
         badCard2 = Gdx.audio.newSound(Gdx.files.internal("Sounds/Chainsaw_2.wav"));
         goodCard1 = Gdx.audio.newSound(Gdx.files.internal("Sounds/Birds_1.wav"));
