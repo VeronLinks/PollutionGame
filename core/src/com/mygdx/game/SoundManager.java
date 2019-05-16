@@ -7,11 +7,12 @@ public class SoundManager
 {
     private static SoundManager instance;
 
-    public Sound s;
+    public Sound cardUsed,addPolution;
 
     private SoundManager()
     {
-        s= Gdx.audio.newSound(Gdx.files.internal("Jump.wav"));
+        cardUsed= Gdx.audio.newSound(Gdx.files.internal("Jump.wav"));
+        //addPolution= Gdx.audio.newSound(Gdx.files.internal("Tonto.wav"));
     }
 
     public static SoundManager getInstance()

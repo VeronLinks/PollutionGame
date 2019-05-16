@@ -45,7 +45,7 @@ public class Card extends GameObject {
     public void use(GameStats stats) {
         stats.addMoney(money);
         stats.addPollution(pollution);
-        SoundManager.getInstance().s.play();
+        SoundManager.getInstance().cardUsed.play();
     }
 
     @Override
