@@ -1,0 +1,32 @@
+Game manager
+	- Turnos
+	- Lógica del juego
+		- Métodos para sumar-restar puntos.
+		- Métodos de movimiento del input controller
+
+Input controller
+	- Android, arcade, PC
+	- Comprobación si nos movemos derecha/izquierda, etc...
+	- Llamamos a los métodos de Game Manager
+
+Player
+	+ Polución, dinero, miembros, *organization class
+	- Elegir carta
+
+Fábricas
+	-
+
+Cartas
+	- Diseñar acciones de las cartas
+	- Militantes +/-, dinero +/-, polución +, afinidad +, bancarrota +, money-turn +/-, militants-turn +/-
+
+WorldRenderer y WorldController
+	-
+	-
+
+
+HUD
+
+Menuses
+	- Menú de inicio
+	- Menú de Pausa

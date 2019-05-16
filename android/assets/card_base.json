@@ -1,0 +1,38 @@
+{
+  "id": "",
+  "cost": {
+    "members": "",
+    "money": ""
+  },
+  "name": "",
+  "description": "",
+  "image": "",
+  "members": {
+    "quantity": "",
+    "target": ""
+  },
+  "money": {
+    "quantity": "",
+    "target": ""
+  },
+  "pollution": {
+    "quantity": "",
+    "target": ""
+  },
+  "affinity": {
+    "quantity": "",
+    "target": ""
+  },
+  "bankruptcy": {
+    "quantity": "",
+    "target": ""
+  },
+  "moneyPerTurn": {
+    "quantity": "",
+    "target": ""
+  },
+  "membersPerTurn": {
+    "quantity": "",
+    "target": ""
+  }
+}
