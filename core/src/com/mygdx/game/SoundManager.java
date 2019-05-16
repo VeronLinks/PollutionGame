@@ -11,14 +11,14 @@ public class SoundManager
 
     private SoundManager()
     {
-        click = Gdx.audio.newSound(Gdx.files.internal("\Sounds\Click.wav"));
-        badCard1 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\Chainsaw_1.wav"));
-        badCard2 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\Chainsaw_2.wav"));
-        goodCard1 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\Birds_1.wav"));
-        goodCard2 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\Birds_2.wav"));
-        mainTheme1 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\MainTheme_1.wav"));
-        mainTheme2 = Gdx.audio.newSound(Gdx.files.internal("\Sounds\MainTheme_2.wav"));
-        mainMenu = Gdx.audio.newSound(Gdx.files.internal("\Sounds\MainMenu_1.wav"));
+        click = Gdx.audio.newSound(Gdx.files.internal("Sounds\Click.wav"));
+        badCard1 = Gdx.audio.newSound(Gdx.files.internal("Sounds\Chainsaw_1.wav"));
+        badCard2 = Gdx.audio.newSound(Gdx.files.internal("Sounds\Chainsaw_2.wav"));
+        goodCard1 = Gdx.audio.newSound(Gdx.files.internal("Sounds\Birds_1.wav"));
+        goodCard2 = Gdx.audio.newSound(Gdx.files.internal("Sounds\Birds_2.wav"));
+        mainTheme1 = Gdx.audio.newSound(Gdx.files.internal("Sounds\MainTheme_1.wav"));
+        mainTheme2 = Gdx.audio.newSound(Gdx.files.internal("Sounds\MainTheme_2.wav"));
+        mainMenu = Gdx.audio.newSound(Gdx.files.internal("Sounds\MainMenu_1.wav"));
     }
 
     public static SoundManager getInstance()
