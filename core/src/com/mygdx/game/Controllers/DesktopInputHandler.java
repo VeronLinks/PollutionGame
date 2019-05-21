@@ -8,8 +8,9 @@ import com.mygdx.game.go.GameObject;
 
 public class DesktopInputHandler implements InputController {
 
-    private boolean inputLeft, inputRight;
+    private boolean inputLeft, inputRight, inputUp, inputDown;
     private boolean inputPause;
+    private boolean inputSelect;
 
     private Vector3 pointHUD, pointGame;
 
@@ -31,6 +32,7 @@ public class DesktopInputHandler implements InputController {
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
             WorldController.camera.zoom += 1f * dt;
         }
+        WorldController.camera.update();
 
     }
 

@@ -1,16 +1,24 @@
 package com.mygdx.game.Controllers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.go.Card;
+import com.mygdx.game.go.GameObject;
 
 public class MobileInputHandler implements InputController {
 
     private boolean finger1, finger2;
-    private boolean inputLeft, inputRight;
+    private boolean inputLeft, inputRight, inputUp, inputDown;
     private boolean inputPause;
+    private boolean inputSelect;
 
-    public MobileInputHandler(){
 
+    private Vector3 pointHUD, pointGame;
+
+    private WorldController controller;
+
+    public MobileInputHandler(WorldController c){
+        controller = c;
     }
 
     @Override
@@ -80,6 +88,31 @@ public class MobileInputHandler implements InputController {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 
+        System.out.println("Click");
+        //screen touched, corresponds to a HUD button?
+        pointHUD = new Vector3(screenX, screenY, 0);
+
+        //check if the click is for the HUD
+        controller.hudCamera.unproject(pointHUD);
+        if (!controller.hud.click(pointHUD.x, pointHUD.y)) {
+
+            //the click is not for the HUD, check if it is for the cards!
+            pointGame = new Vector3(screenX, screenY, 0);
+            controller.camera.unproject(pointGame);
+
+            for (GameObject card : controller.cardsOnBoard) {
+
+                if (card instanceof Card && card.getBounds().contains(pointGame.x, pointGame.y)) {
+                    //card clicked, "use" it and remove it afterwards
+                    controller.toRemove = (Card) card;
+                    controller.toRemove.use(controller.gameStats);
+                }
+            }
+        }
+        if (controller.toRemove != null) {
+            controller.cardsOnBoard.remove(controller.toRemove);
+            controller.toRemove = null;
+        }
         return false;
     }
 

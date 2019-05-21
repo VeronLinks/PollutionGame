@@ -38,7 +38,7 @@ public class MyGdxGame  extends InputAdapter implements ApplicationListener {
 			input = new DesktopInputHandler(controller);
 		}else{
 
-			input = new MobileInputHandler();
+			input = new MobileInputHandler(controller);
 		}
 
 		Gdx.input.setInputProcessor(input);
