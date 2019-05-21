@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,7 +36,15 @@ public class MyGdxGame  extends InputAdapter implements ApplicationListener {
 
 		if(Gdx.app.getType() == Application.ApplicationType.Desktop){
 
-			input = new DesktopInputHandler(controller);
+			if(Controllers.getControllers().size > 0){
+
+				ArcadeInputHandler arcade = new ArcadeInputHandler(controller);
+				input = arcade;
+				Controllers.addListener(arcade);
+			}else{
+
+				input = new DesktopInputHandler(controller);
+			}
 		}else{
 
 			input = new MobileInputHandler(controller);
