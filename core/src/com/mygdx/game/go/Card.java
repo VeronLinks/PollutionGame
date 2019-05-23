@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.SoundManager;
 import com.mygdx.game.hud.GameStats;
 
@@ -22,6 +23,7 @@ public class Card extends GameObject {
     private Rectangle imageBounds;
     private Rectangle textBounds;
 
+     private GameManager GM;
     /**
      * will be called by the JSON populator
      */
@@ -39,13 +41,20 @@ public class Card extends GameObject {
         c = new Color(cardR, cardG, cardB, 1f);
         imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
         textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
-
+        GM = GameManager.getInstance();
     }
 
     public void use(GameStats stats) {
         stats.addMoney(money);
         stats.addPollution(pollution);
-        SoundManager.getInstance().cardUsed.play();
+
+        //GM.playerList.get(GM.turn).volunteers = volunteers;
+        //GM.playerList.get(GM.turn).money = money;
+        //GM.playerList.get(GM.turn).pollution = pollution;
+
+        GameManager.getInstance().nextTurn();
+
+        SoundManager.getInstance().click.play();
     }
 
     @Override

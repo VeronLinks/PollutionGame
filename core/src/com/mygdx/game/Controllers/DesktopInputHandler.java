@@ -3,17 +3,20 @@ package com.mygdx.game.Controllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Card;
 import com.mygdx.game.go.GameObject;
 
 public class DesktopInputHandler implements InputController {
 
-    private boolean inputLeft, inputRight;
+    private boolean inputLeft, inputRight, inputUp, inputDown;
     private boolean inputPause;
+    private boolean inputSelect;
 
     private Vector3 pointHUD, pointGame;
 
     private WorldController controller;
+    private GameManager GM =GameManager.getInstance();
 
 
     public DesktopInputHandler(WorldController c){
@@ -31,6 +34,7 @@ public class DesktopInputHandler implements InputController {
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
             WorldController.camera.zoom += 1f * dt;
         }
+        WorldController.camera.update();
 
     }
 
@@ -58,23 +62,23 @@ public class DesktopInputHandler implements InputController {
 
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
-        if (!controller.hud.click(pointHUD.x, pointHUD.y)) {
+        if (!GM.hud.click(pointHUD.x, pointHUD.y)) {
 
             //the click is not for the HUD, check if it is for the cards!
             pointGame = new Vector3(screenX, screenY, 0);
             controller.camera.unproject(pointGame);
 
-            for (GameObject card : controller.cardsOnBoard) {
+            for (GameObject card : GM.cardsOnBoard) {
 
                 if (card instanceof Card && card.getBounds().contains(pointGame.x, pointGame.y)) {
                     //card clicked, "use" it and remove it afterwards
                     controller.toRemove = (Card) card;
-                    controller.toRemove.use(controller.gameStats);
+                    controller.toRemove.use(GM.gameStats);
                 }
             }
         }
         if (controller.toRemove != null) {
-            controller.cardsOnBoard.remove(controller.toRemove);
+            GM.cardsOnBoard.remove(controller.toRemove);
             controller.toRemove = null;
         }
         return false;
