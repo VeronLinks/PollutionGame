@@ -30,3 +30,21 @@ HUD
 Menuses
 	- Menú de inicio
 	- Menú de Pausa
+
+[JsonProperty("id")]
+public int id {get; set;}
+
+[JsonProperty("name")]
+public string name {get; set;}
+
+JsonProperty("cost")]
+public Cost cost {get; set;}
+
+public static Cost{
+    [JsonProperty ("money")]
+    public int money {get; set;}
+
+    [JsonProperty ("volunteers")]
+    public int volunteers{get;set;}
+}
+
