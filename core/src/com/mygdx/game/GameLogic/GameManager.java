@@ -1,51 +1,108 @@
 package com.mygdx.game.GameLogic;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Json;
+import com.mygdx.game.Constants;
+import com.mygdx.game.Controllers.WorldController;
+import com.mygdx.game.go.Background;
+import com.mygdx.game.go.Card;
+import com.mygdx.game.go.CardFactory;
+import com.mygdx.game.go.GameObject;
+import com.mygdx.game.hud.GameStats;
+import com.mygdx.game.hud.HUD;
+import com.mygdx.game.hud.TextButton;
+
 import java.util.ArrayList;
 
 public class GameManager
 {
     private static GameManager instance;
 
-    Player player1,player2;
-    EvilFactory eFactory1,eFactory2,eFactory3,eFactory4;
-    ArrayList<Members> gameTurn;
-    int turn;
+    public ArrayList<Player> playerList;
+    public ArrayList<EvilFactory> eFactoryList;
+    public ArrayList<GameObject> cardsOnBoard;
 
-    private GameManager()
+    CardFactory factory;
+    Background bg;
+    public HUD hud;
+    public GameStats gameStats;
+
+    private WorldController WC = WorldController.getInstance();
+
+    public int turn;
+    public static int jugadores;
+
+    private GameManager(int jugadores)
     {
         turn = 0;
+        this.jugadores=jugadores;
 
-        player1 = new Player();
-        player2 = new Player();
+        eFactoryList = new ArrayList<EvilFactory>();
+        playerList = new ArrayList<Player>();
+        cardsOnBoard = new ArrayList<GameObject>();
 
-        eFactory1 = new EvilFactory();
-        eFactory2 = new EvilFactory();
-        eFactory3 = new EvilFactory();
-        eFactory4 = new EvilFactory();
+        for(int i=0;i<jugadores;i++)
+        {
+            playerList.add(new Player());
+        }
 
-        gameTurn.add(player1);
-        gameTurn.add(player2);
-        gameTurn.add(eFactory1);
-        gameTurn.add(eFactory2);
-        gameTurn.add(eFactory3);
-        gameTurn.add(eFactory4);
+        for(int i=0;i< Constants.NUMBER_EVIL_FACTORIES;i++)
+        {
+            eFactoryList.add(new EvilFactory());
+        }
+
+        createMasterDeck();
+
+        createHUD();
     }
 
     public static GameManager getInstance(){
         if(instance==null){
-            instance = new GameManager();
+            instance = new GameManager(jugadores);
         }
         return instance;
     }
 
-    public void update(float dt)
-    {
-
-    }
-
     public void nextTurn()
     {
-        turn+=1%6;
+        if(turn==jugadores-1)
+        {
+            EvilTurn();
+        }
+            turn+=1%jugadores;
+    }
+
+    public void EvilTurn()
+    {
+        for(int i=0;i<Constants.NUMBER_EVIL_FACTORIES;i++)
+        {
+            //aqui se mete el uso de la carta que usa la factory.
+        }
+    }
+
+    private void createMasterDeck() {
+        Json json = new Json();
+        factory = json.fromJson(CardFactory.class, Gdx.files.internal("example.json"));
+
+        System.out.println(factory.cards.size() + " cards in the master deck");
+    }
+
+    private void createHUD() {
+        hud = new HUD();
+        TextButton b1 = new TextButton("CARD", 10, 10, 120, 40) {
+            @Override
+            public void click() {
+                Card c = factory.gimmeRandomCard();
+                c.position.x = MathUtils.random(-WC.camera.viewportWidth / 3, WC.camera.viewportWidth / 3);
+                c.position.y = MathUtils.random(-WC.camera.viewportHeight / 3, WC.camera.viewportHeight / 3);
+                c.init();
+                cardsOnBoard.add(c);
+            }
+        };
+        hud.add(b1);
+        gameStats = new GameStats(200, 40);
+        hud.add(gameStats);
     }
 
 }
