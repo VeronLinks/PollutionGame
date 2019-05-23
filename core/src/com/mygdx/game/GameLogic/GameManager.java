@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.game.Constants;
 import com.mygdx.game.Controllers.WorldController;
-import com.mygdx.game.go.Background;
 import com.mygdx.game.go.Card;
 import com.mygdx.game.go.CardFactory;
 import com.mygdx.game.go.GameObject;
@@ -22,16 +21,13 @@ public class GameManager
     public ArrayList<Player> playerList;
     public ArrayList<EvilFactory> eFactoryList;
     public ArrayList<GameObject> cardsOnBoard;
-
-    CardFactory factory;
-    Background bg;
+    public int turn;
+    public static int jugadores;
     public HUD hud;
     public GameStats gameStats;
 
-    private WorldController WC = WorldController.getInstance();
-
-    public int turn;
-    public static int jugadores;
+    CardFactory factory;
+    WorldController WC = WorldController.getInstance();
 
     private GameManager(int jugadores)
     {
@@ -53,11 +49,11 @@ public class GameManager
         }
 
         createMasterDeck();
-
         createHUD();
     }
 
-    public static GameManager getInstance(){
+    public static GameManager getInstance()
+    {
         if(instance==null){
             instance = new GameManager(jugadores);
         }
@@ -81,14 +77,15 @@ public class GameManager
         }
     }
 
-    private void createMasterDeck() {
+    private void createMasterDeck()
+    {
         Json json = new Json();
         factory = json.fromJson(CardFactory.class, Gdx.files.internal("example.json"));
-
         System.out.println(factory.cards.size() + " cards in the master deck");
     }
 
-    private void createHUD() {
+    private void createHUD()
+    {
         hud = new HUD();
         TextButton b1 = new TextButton("CARD", 10, 10, 120, 40) {
             @Override
@@ -104,5 +101,4 @@ public class GameManager
         gameStats = new GameStats(200, 40);
         hud.add(gameStats);
     }
-
 }
