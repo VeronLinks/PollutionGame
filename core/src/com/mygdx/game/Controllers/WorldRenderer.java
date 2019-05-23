@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Constants;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Background;
 import com.mygdx.game.go.GameObject;
 import com.mygdx.game.hud.HUD;
@@ -20,6 +21,7 @@ public class WorldRenderer {
     private WorldController controller;
     private Background bg = new Background();
     private HUD hud;
+    private GameManager GM =GameManager.getInstance();
 
 
 
@@ -29,7 +31,7 @@ public class WorldRenderer {
         camera = controller.camera;
         hudCamera = controller.hudCamera;
 
-        hud = controller.hud;
+        hud = GM.hud;
 
         init();
     }
@@ -45,7 +47,7 @@ public class WorldRenderer {
 
     public void render(){
 
-        ArrayList<GameObject> gameObjects = controller.cardsOnBoard;
+        ArrayList<GameObject> gameObjects = GM.cardsOnBoard;
 
         batch.setColor(Color.WHITE);
         batch.setProjectionMatrix(camera.combined);

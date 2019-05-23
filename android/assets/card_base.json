@@ -1,38 +1,724 @@
 {
-  "id": "",
-  "cost": {
-    "members": "",
-    "money": ""
-  },
-  "name": "",
-  "description": "",
-  "image": "",
-  "members": {
-    "quantity": "",
-    "target": ""
-  },
-  "money": {
-    "quantity": "",
-    "target": ""
-  },
-  "pollution": {
-    "quantity": "",
-    "target": ""
-  },
-  "affinity": {
-    "quantity": "",
-    "target": ""
-  },
-  "bankruptcy": {
-    "quantity": "",
-    "target": ""
-  },
-  "moneyPerTurn": {
-    "quantity": "",
-    "target": ""
-  },
-  "membersPerTurn": {
-    "quantity": "",
-    "target": ""
-  }
+  "self_cards":
+          [
+            {
+              "id": 0,
+              "volunteers": 4,
+              "money": 1
+            },
+
+            {
+              "id": 1,
+              "volunteers": 2,
+              "money": 3
+            },
+
+            {
+              "id": 2,
+              "volunteers": 0,
+              "money": 1
+            },
+
+            {
+              "id": 3,
+              "volunteers": 1,
+              "money": 0
+            },
+
+            {
+              "id": 4,
+              "volunteers": 3,
+              "money": 1
+            },
+
+            {
+              "id": 5,
+              "volunteers": 0,
+              "money": 5
+            },
+
+            {
+              "id": 6,
+              "volunteers": 0,
+              "money": 4
+            },
+
+            {
+              "id": 7,
+              "volunteers": 1,
+              "money": 3
+            },
+
+            {
+              "id": 8,
+              "volunteers": 1,
+              "money": 2
+            },
+
+            {
+              "id": 9,
+              "volunteers": 0,
+              "money": 1
+            },
+
+            {
+              "id": 10,
+              "volunteers": 3,
+              "money": 2
+            },
+
+            {
+              "id": 11,
+              "volunteers": 2,
+              "money": 1
+            },
+
+            {
+              "id": 12,
+              "volunteers": 0,
+              "money": 3
+            },
+
+            {
+              "id": 13,
+              "volunteers": 1,
+              "money": 3
+            },
+
+            {
+              "id": 14,
+              "volunteers": 2,
+              "money": 2
+            }
+          ],
+  
+  "selected_cards": 
+          [
+            {
+              "id": 0,
+              "name": "Prouder",
+              "description": "",
+              "cost": {
+                "money": 0,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 2,
+                "target": "SELF"
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 1,
+              "name": "Armed robbery",
+              "description": "",
+              "cost": {
+                "money": 2,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 2,
+                "target": "SELF"
+              },
+              "volunteers": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              }
+            },
+
+            {
+              "id": 2,
+              "name": "Cleaning team",
+              "description": "",
+              "cost": {
+                "money": 0,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 3,
+              "name": "Coprophagy",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 0
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 4,
+              "name": "Image cleaning",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 2,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 5,
+              "name": "Blind eye",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 2
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 2,
+                "target": "SELF"
+              },
+              "affinity": {
+                "quantity": 2,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 6,
+              "name": "Illegal dumping",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 0
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              }
+            },
+
+            {
+              "id": 7,
+              "name": "Corruption range",
+              "description": "",
+              "cost": {
+                "money": 0,
+                "volunteers": 2
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 2,
+                "target": "TARGET_FACTORY"
+              }
+            },
+
+            {
+              "id": 8,
+              "name": "Arranged marriage",
+              "description": "",
+              "cost": {
+                "money": 6,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 3,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 9,
+              "name": "Viral video",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 2,
+                "target": "TARGET_FACTORY"
+              }
+            },
+
+            {
+              "id": 10,
+              "name": "Motivational talk",
+              "description": "",
+              "cost": {
+                "money": 0,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 11,
+              "name": "Manifestation",
+              "description": "",
+              "cost": {
+                "money": 1,
+                "volunteers": 3
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              }
+            },
+
+            {
+              "id": 12,
+              "name": "Money is power",
+              "description": "",
+              "cost": {
+                "money": 4,
+                "volunteers": 0
+              },
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 1,
+                "target": "TARGET_FACTORY"
+              },
+              "bankrupty": {
+                "quantity": -1,
+                "target": "TARGET_FACTORY"
+              }
+            }
+          ],
+
+  "factory_cards":
+          [
+            {
+              "id": 0,
+              "name": "The coast of silence",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 1,
+                "target": "ALL_PLAYERS"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 1,
+              "name": "Radioactive discharge",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 3,
+                "target": "FIRST_PLAYER"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 2,
+              "name": "Mass production",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 1,
+                "target": "ALL_PLAYERS"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 2,
+                "target": "SELF"
+              }
+            },
+
+            {
+              "id": 3,
+              "name": "Spies",
+              "description": "",
+              "money": {
+                "quantity": -2,
+                "target": "FIRST_PLAYER"
+              },
+              "volunteers": {
+                "quantity": -1,
+                "target": "FIRST_PLAYER"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 4,
+              "name": "20 dollars is 20 dollars",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": -1,
+                "target": "ALL_FACTORIES"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 5,
+              "name": "Unfair confrontation",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": -1,
+                "target": "ALL_PLAYERS"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 6,
+              "name": "Excessive force",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": -2,
+                "target": "FIRST_PLAYER"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 7,
+              "name": "Stool rain",
+              "description": "",
+              "money": {
+                "quantity": 0,
+                "target": ""
+              },
+              "volunteers": {
+                "quantity": 0,
+                "target": ""
+              },
+              "pollution": {
+                "quantity": 1,
+                "target": "ALL_PLAYERS"
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            },
+
+            {
+              "id": 8,
+              "name": "Supine hunger",
+              "description": "",
+              "money": {
+                "quantity": -3,
+                "target": "FIRST_PLAYER"
+              },
+              "volunteers": {
+                "quantity": 1,
+                "target": "FIRST_PLAYER"
+              },
+              "pollution": {
+                "quantity": 0,
+                "target": ""
+              },
+              "affinity": {
+                "quantity": 0,
+                "target": ""
+              },
+              "bankrupty": {
+                "quantity": 0,
+                "target": ""
+              }
+            }
+          ]
 }
