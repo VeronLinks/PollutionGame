@@ -8,7 +8,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
+import com.mygdx.game.Assets;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.hud.HUDElement;
+import com.mygdx.game.hud.TextButton;
+
+import java.util.ArrayList;
+
+// WE WILL HAVE TO CHANGE THE INPUT PROCESSOR FOR THE MENU
 
 public class MenuScreen implements Screen {
 
@@ -17,29 +24,62 @@ public class MenuScreen implements Screen {
     SpriteBatch batch;
     OrthographicCamera camera;
     int playersNumber;
+    ArrayList<TextButton> elements;
 
     public MenuScreen(Game game) {
         this.game = game;
-        font = new BitmapFont();
+        font = Assets.getInstance().bigFont;
         batch = new SpriteBatch();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
+        //
+
+        elements = new ArrayList<TextButton>();
+
     }
 
     @Override
     public void show() {
 
+        TextButton b1 = new TextButton("2",10,10,120,40) {
+            @Override
+            public void click() {
+                System.out.println("E1");
+                playersNumber = 2;
+                game.setScreen(((MyGdxGame) game).gameScreen);
+            }
+        };
+        TextButton b2 = new TextButton("3",10,80,120,40){
+            @Override
+            public void click()
+            {
+                System.out.println("E2");
+                playersNumber = 3;
+                game.setScreen(((MyGdxGame) game).gameScreen);
+            }
+        };
+        TextButton b3 = new TextButton("4",10,150,120,40) {
+            @Override
+            public void click() {
+                System.out.println("E3");
+                playersNumber = 4;
+                game.setScreen(((MyGdxGame) game).gameScreen);
+            }
+        };
+        elements.add(b1);
+        elements.add(b2);
+        elements.add(b3);
     }
 
     @Override
     public void render(float delta) {
 
-        System.out.println("EEEE");
         Gdx.gl.glClearColor(0f, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         ((MyGdxGame)game).input.update(Gdx.graphics.getDeltaTime());
 
-        //update
+        /*//update
         if (Gdx.input.isTouched())
         {
             if (Gdx.input.getX() < Gdx.graphics.getWidth() / 3)
@@ -54,8 +94,7 @@ public class MenuScreen implements Screen {
             {
                 playersNumber = 4;
             }
-            game.setScreen(((MyGdxGame) game).gameScreen);
-        }
+        }*/
 
         //render
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
@@ -64,7 +103,11 @@ public class MenuScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        font.draw(batch,"Click Left for 2, Center for 3 or Right for 4", -camera.viewportWidth/2,0,camera.viewportWidth, Align.center,true);
+        font.draw(batch,"Choose how many players will play", -camera.viewportWidth/2,camera.viewportHeight/3,camera.viewportWidth, Align.center,true);
+
+        for(HUDElement he : elements){
+            he.render(batch);
+        }
 
         batch.end();
 

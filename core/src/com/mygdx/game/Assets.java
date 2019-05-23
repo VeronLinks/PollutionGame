@@ -13,10 +13,14 @@ public class Assets {
     public Texture coin;
     public Texture button;
     public BitmapFont HUDfont;
-    public BitmapFont GameFont;
+    public BitmapFont bigFont;
+    public BitmapFont mediumFont;
+    public BitmapFont littleFont;
     public Texture card;
     public Texture black;
     public Texture cloud;
+
+    public BitmapFont GameFont;
 
     private static Assets instance;
 
@@ -34,12 +38,22 @@ public class Assets {
 
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Roboto-Medium.ttf"));
+
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 22;
-        GameFont = generator.generateFont(parameter); // font size 12 pixels
+        parameter.size = 50;
+        bigFont = generator.generateFont(parameter);
+
+        parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 25;
+        mediumFont = generator.generateFont(parameter);
+
+        parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 12;
+        littleFont = generator.generateFont(parameter);
+
+        GameFont = littleFont;
+
         generator.dispose(); // don't forget to dispose to avoid memory leaks!
-
-
     }
 
     public Texture getTexture(String texName) {
