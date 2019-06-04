@@ -97,7 +97,7 @@
             {
               "id": 0,
               "name": "Prouder",
-              "description": "",
+              "description": "An old friend of yours is rich and sympathetic to the cause. You get 2 money",
               "cost": {
                 "money": 0,
                 "volunteers": 1
@@ -127,7 +127,7 @@
             {
               "id": 1,
               "name": "Armed robbery",
-              "description": "",
+              "description": "The factory earns 1 bankruptcy and your NGO earns 2 money. You lose a volunteer permanently. Fortunately, they were never interacted with your NGO.",
               "cost": {
                 "money": 2,
                 "volunteers": 1
@@ -157,7 +157,7 @@
             {
               "id": 2,
               "name": "Cleaning team",
-              "description": "",
+              "description": "Reduces your pollution in one.",
               "cost": {
                 "money": 0,
                 "volunteers": 1
@@ -187,7 +187,7 @@
             {
               "id": 3,
               "name": "Coprophagy",
-              "description": "",
+              "description": "Reduces your pollution in one.",
               "cost": {
                 "money": 1,
                 "volunteers": 0
@@ -217,7 +217,7 @@
             {
               "id": 4,
               "name": "Image cleaning",
-              "description": "",
+              "description": "The company decides to improve its image and becomes more akin to NGOs. Affinity increases by 2 points.",
               "cost": {
                 "money": 1,
                 "volunteers": 1
@@ -247,7 +247,7 @@
             {
               "id": 5,
               "name": "Blind eye",
-              "description": "",
+              "description": "Increase the affinity of a company 2 points, but raises your pollution 2 points.",
               "cost": {
                 "money": 1,
                 "volunteers": 2
@@ -277,7 +277,7 @@
             {
               "id": 6,
               "name": "Illegal dumping",
-              "description": "",
+              "description": "You raise the bankruptcy of a factory one point.",
               "cost": {
                 "money": 1,
                 "volunteers": 0
@@ -307,7 +307,7 @@
             {
               "id": 7,
               "name": "Corruption range",
-              "description": "",
+              "description": "You uncover a web of corruption increasing the bankruptcy of a factory 2 points.",
               "cost": {
                 "money": 0,
                 "volunteers": 2
@@ -337,7 +337,7 @@
             {
               "id": 8,
               "name": "Arranged marriage",
-              "description": "",
+              "description": "You lose a volunteer permanently and raise the affinity of a factory 3 points.",
               "cost": {
                 "money": 6,
                 "volunteers": 1
@@ -367,7 +367,7 @@
             {
               "id": 9,
               "name": "Viral video",
-              "description": "",
+              "description": "Your Social Resources have made a video about the activity of a factory of your choice. Sales plummet. Increases its bankruptcy by 2.",
               "cost": {
                 "money": 1,
                 "volunteers": 1
@@ -397,7 +397,7 @@
             {
               "id": 10,
               "name": "Motivational talk",
-              "description": "",
+              "description": "You raise the affinity of a factory 1 point.",
               "cost": {
                 "money": 0,
                 "volunteers": 1
@@ -427,7 +427,7 @@
             {
               "id": 11,
               "name": "Manifestation",
-              "description": "",
+              "description": "You raise the affinity and bankruptcy of a factory in one.",
               "cost": {
                 "money": 1,
                 "volunteers": 3
@@ -457,7 +457,7 @@
             {
               "id": 12,
               "name": "Money is power",
-              "description": "",
+              "description": "You raise the affinity of a factory 1 point and reduce its bankruptcy 1 point.",
               "cost": {
                 "money": 4,
                 "volunteers": 0
@@ -490,7 +490,7 @@
             {
               "id": 0,
               "name": "The coast of silence",
-              "description": "",
+              "description": "Increases the pollution of all players in 1.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -516,7 +516,7 @@
             {
               "id": 1,
               "name": "Radioactive discharge",
-              "description": "",
+              "description": "Pollution of the first player increases in 3.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -542,7 +542,7 @@
             {
               "id": 2,
               "name": "Mass production",
-              "description": "",
+              "description": "Increase total pollution by 1 and reduces your bankruptcy by 2.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -568,7 +568,7 @@
             {
               "id": 3,
               "name": "Spies",
-              "description": "",
+              "description": "A company had infiltrated spies in your organization. You lose 1 volunteer and 2 money.",
               "money": {
                 "quantity": -2,
                 "target": "FIRST_PLAYER"
@@ -594,7 +594,7 @@
             {
               "id": 4,
               "name": "20 dollars is 20 dollars",
-              "description": "",
+              "description": "It diminishes the affinity of all the factories in 1.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -620,7 +620,7 @@
             {
               "id": 5,
               "name": "Unfair confrontation",
-              "description": "",
+              "description": "This factory sets out to distribute funny balloons with shapes of cartoon characters to clean their image. Loses 1 affinity and all NGOs lose a volunteer.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -646,7 +646,7 @@
             {
               "id": 6,
               "name": "Excessive force",
-              "description": "",
+              "description": "In a manifestation, in front of the offices of the company, a police charge has wounded 2 volunteers.\n",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -672,7 +672,7 @@
             {
               "id": 7,
               "name": "Stool rain",
-              "description": "",
+              "description": "Pollution of all players increases in 1.",
               "money": {
                 "quantity": 0,
                 "target": ""
@@ -698,7 +698,7 @@
             {
               "id": 8,
               "name": "Supine hunger",
-              "description": "",
+              "description": "A volunteer has eaten part of your funds. You lose a volunteer and 3 money.",
               "money": {
                 "quantity": -3,
                 "target": "FIRST_PLAYER"
