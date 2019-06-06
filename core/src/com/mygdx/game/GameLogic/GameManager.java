@@ -270,7 +270,11 @@ public class GameManager
         pauseHUD.add(b1);
         TextButton b2 = new TextButton("Resume", 200, 10, 120, 40) {
             @Override
-            public void click() { isPaused = false; }
+            public void click()
+            {
+                isPaused = false;
+                game.setScreen(game.menuScreen);
+            }
         };
         pauseHUD.add(b2);
     }
