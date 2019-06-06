@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.game.Constants;
 import com.mygdx.game.Controllers.WorldController;
+import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.Screens.EndScreen;
 import com.mygdx.game.go.*;
 import com.mygdx.game.hud.GameStats;
 import com.mygdx.game.hud.HUD;
@@ -28,9 +30,14 @@ public class GameManager
     public static int startedLastTurn;
 
     private static int numberOfTurns;
+    private static MyGdxGame game;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
+
+    public static void setGame(MyGdxGame game) {
+        GameManager.game = game;
+    }
 
     private GameManager()
     {
@@ -41,12 +48,7 @@ public class GameManager
         playerList = new ArrayList<Player>();
         cardsOnBoard = new ArrayList<GameObject>();
 
-        for(int i = 0; i < players; i++)
-        {
-            playerList.add(new Player());
-        }
-
-        for(int i=0;i < Constants.NUMBER_EVIL_FACTORIES;i++)
+        for(int i = 0;i < Constants.NUMBER_EVIL_FACTORIES;i++)
         {
             eFactoryList.add(new EvilFactory());
         }
@@ -57,6 +59,12 @@ public class GameManager
     public void gameInit(int numOfPlayers)
     {
         players = numOfPlayers;
+
+        for(int i = 0; i < players; i++)
+        {
+            playerList.add(new Player());
+        }
+
         createMasterDeck();
         fillHUD();
     }
@@ -71,6 +79,17 @@ public class GameManager
 
     public void nextTurn()
     {
+        // CHECK VICOTRY / LOSS CONDITIONS:
+        if (allFactoriesLost())
+        {
+            game.setScreen(new EndScreen(game, true));
+        }
+        else if (allPlayersLost())
+        {
+            game.setScreen(new EndScreen(game, false));
+        }
+
+        // NOW GO ON WITH TURNS
         if(numberOfTurns == players)
         {
             EvilTurn();
@@ -78,6 +97,27 @@ public class GameManager
         else {
             PlayerTurn();
         }
+    }
+
+    private boolean allFactoriesLost()
+    {
+        for (EvilFactory f : eFactoryList) {
+            if (f.affinity < Constants.MAX_AFFINITY && f.bankruptcy < Constants.MAX_BANKRUP)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean allPlayersLost()
+    {
+        for (Player p : playerList) {
+            if (p.pollution < Constants.MAX_POLLUTION)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void PlayerTurn()
@@ -106,6 +146,7 @@ public class GameManager
             startedLastTurn = 0;
         }
         turn = startedLastTurn;
+        nextTurn();
     }
 
     private void createMasterDeck()

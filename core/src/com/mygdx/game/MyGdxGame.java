@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.controllers.Controllers;
 import com.mygdx.game.Controllers.*;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.Screens.GameScreen;
 import com.mygdx.game.Screens.MenuScreen;
 
@@ -55,6 +56,8 @@ public class MyGdxGame extends Game {
 
 		menuScreen = new MenuScreen(this);
 		gameScreen = new GameScreen(this);
+
+		GameManager.setGame(this);
 
 		setScreen(menuScreen);
 		//setScreen(new EndScreen(this, false));

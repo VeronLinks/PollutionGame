@@ -56,8 +56,6 @@ public class FactoryCard extends GameObject {
         targetedUse(pollution);
         targetedUse(affinity);
         targetedUse(bankrupty);
-
-        GameManager.getInstance().nextTurn();
     }
 
     private void targetedUse(QuantityTarget qT)
