@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Controllers.WorldController;
@@ -15,7 +14,6 @@ import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.SoundManager;
 import com.mygdx.game.hud.HUD;
-import com.mygdx.game.hud.HUDElement;
 import com.mygdx.game.hud.TextButton;
 
 import java.util.ArrayList;
@@ -36,7 +34,7 @@ public class MenuScreen implements Screen {
         this.game = (MyGdxGame)game;
         font = Assets.getInstance().bigFont;
         batch = new SpriteBatch();
-        camera = WorldController.camera;
+        camera = WorldController.hudCamera;
         hud = GameManager.getInstance().hud;
 
         init();
@@ -44,7 +42,7 @@ public class MenuScreen implements Screen {
 
     public void init()
     {
-        playersNumber = 0;
+        GameManager.players = playersNumber = 0;
     }
 
     @Override
