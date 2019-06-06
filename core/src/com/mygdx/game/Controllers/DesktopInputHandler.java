@@ -60,7 +60,7 @@ public class DesktopInputHandler implements InputController {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         //screen touched, corresponds to a HUD button?
         pointHUD = new Vector3(screenX, screenY, 0);
-        
+
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
         if (!GM.hud.click(pointHUD.x, pointHUD.y)) {
@@ -74,11 +74,13 @@ public class DesktopInputHandler implements InputController {
                 if (card instanceof SelectedCard && card.getBounds().contains(pointGame.x, pointGame.y)) {
                     //card clicked, "use" it and remove it afterwards
                     ((SelectedCard) card).use();
+                    return true;
                 }
 
                 if (card instanceof BasicAction && card.getBounds().contains(pointGame.x, pointGame.y)) {
                     //card clicked, "use" it and remove it afterwards
                     ((BasicAction) card).use();
+                    return true;
                 }
             }
         }

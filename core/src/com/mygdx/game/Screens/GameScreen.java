@@ -30,7 +30,8 @@ public class GameScreen implements Screen {
         {
             GameManager.getInstance().playerList.add(new Player());
         }
-        GameManager.getInstance().PlayerTurn();
+        GameManager.getInstance().currentPlayer =
+                GameManager.getInstance().playerList.get(GameManager.getInstance().turn);
     }
 
     @Override

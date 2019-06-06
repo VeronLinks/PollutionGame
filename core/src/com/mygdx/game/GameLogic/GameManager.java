@@ -156,6 +156,7 @@ public class GameManager
             startedLastTurn = 0;
         }
         turn = startedLastTurn;
+        fillBoard();
         nextTurn();
     }
 
@@ -181,14 +182,13 @@ public class GameManager
         System.out.println(factory.factory_cards.size() + " cards in the factory_cards deck");
     }
 
-    private void fillHUD()
+    private void fillBoard()
     {
-        float margin = 30;
-        int maxCards = 6;
         int x = (int)(-WC.camera.viewportWidth/6.5f);
         int y = (int)-WC.camera.viewportHeight/10;
         int offset = (int)(WC.camera.viewportWidth/5.5f);
-        for (int i=0;i<maxCards; i++){
+        cardsOnBoard.clear();
+        for (int i = 0; i < Constants.MAX_CARDS; i++){
             SelectedCard c = factory.gimmeRandomSelectedCard();
             c.position.x = x + offset*(i%3);
             if(i<3){
@@ -199,6 +199,14 @@ public class GameManager
             c.init();
             cardsOnBoard.add(c);
         }
+    }
+
+    private void fillHUD()
+    {
+        float margin = 30;
+
+        fillBoard();
+
         for(BasicAction b : factory.basicActions){
             basicActions.add(b);
         }
