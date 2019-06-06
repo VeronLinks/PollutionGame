@@ -19,6 +19,7 @@ public class Assets {
     public Texture card;
     public Texture black;
     public Texture cloud;
+    public Texture backgroundGame;
 
     public BitmapFont GameFont;
 
@@ -32,6 +33,7 @@ public class Assets {
         card = new Texture(Gdx.files.internal("card.png"));
         black = new Texture(Gdx.files.internal("black.png"));
         cloud = new Texture(Gdx.files.internal("cloud.png"));
+        backgroundGame = new Texture(Gdx.files.internal("Tablero.jpg"));
         button = createButtonTexture();
         HUDfont = new BitmapFont();
         HUDfont.getData().setScale(2);
