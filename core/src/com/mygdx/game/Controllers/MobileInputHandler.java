@@ -1,6 +1,7 @@
 package com.mygdx.game.Controllers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.*;
@@ -71,7 +72,12 @@ public class MobileInputHandler implements InputController {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(int keycode)
+    {
+        if(keycode == Input.Keys.BACK)
+        {
+            GameManager.isPaused=true;
+        }
         return false;
     }
 

@@ -1,6 +1,7 @@
 package com.mygdx.game.GameLogic;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Constants;
 import com.mygdx.game.go.AuxiliarClasses.Cost;
 import com.mygdx.game.go.GameObject;
 
@@ -43,9 +44,9 @@ public class Player extends GameObject
         {
             this.pollution = 1;
         }
-        if (this.pollution >15)
+        if (this.pollution > Constants.MAX_POLLUTION)
         {
-            this.pollution = 15;
+            this.pollution = Constants.MAX_POLLUTION;
         }
     }
 

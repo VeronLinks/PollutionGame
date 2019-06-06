@@ -225,7 +225,7 @@ public class WorldRenderer {
         int offsetY = (int) WorldController.camera.viewportHeight/35+(int) WorldController.camera.viewportHeight/100;
         for(int i=0;i<GM.players; i++){
             batch.setColor(colors[i]);
-            batch.draw(Assets.getInstance().box, x+offsetX*i, y+offsetY*GM.playerList.get(i).pollution, w, w);
+            batch.draw(Assets.getInstance().box, x+offsetX*i, y+offsetY*(GM.playerList.get(i).pollution-1), w, w);
         }
         batch.setColor(Color.WHITE);
     }
