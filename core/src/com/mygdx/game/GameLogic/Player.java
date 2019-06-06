@@ -43,6 +43,10 @@ public class Player extends GameObject
         {
             this.pollution = 1;
         }
+        if (this.pollution >15)
+        {
+            this.pollution = 15;
+        }
     }
 
     @Override
