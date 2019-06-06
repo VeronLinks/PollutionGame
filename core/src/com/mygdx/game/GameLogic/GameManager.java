@@ -104,6 +104,7 @@ public class GameManager
         }
         else {
             PlayerTurn();
+            numberOfTurns++;
         }
     }
 
@@ -130,13 +131,12 @@ public class GameManager
 
     public void PlayerTurn()
     {
-        currentPlayer = playerList.get(turn);
         turn++;
         if (turn == players)
         {
             turn = 0;
         }
-        numberOfTurns++;
+        currentPlayer = playerList.get(turn);
     }
 
     private void EvilTurn()
