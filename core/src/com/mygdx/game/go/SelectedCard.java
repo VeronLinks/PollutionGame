@@ -73,30 +73,29 @@ public class SelectedCard extends GameObject {
 
     private void targetedUse(QuantityTarget qT)
     {
-        System.out.println(qT.target);
-        if (qT.target == Constants.SELF)
+        if (qT.target.equals(Constants.SELF))
         {
             GameManager.playerList.get(GameManager.turn).useCard
                     (pollution.quantity, money.quantity, volunteers.quantity);
         }
-        else if (qT.target == Constants.FIRST_PLAYER)
+        else if (qT.target.equals(Constants.FIRST_PLAYER))
         {
             GameManager.playerList.get(GameManager.startedLastTurn).useCard
                     (pollution.quantity, money.quantity, volunteers.quantity);
         }
-        else if (qT.target == Constants.PLAYERS)
+        else if (qT.target.equals(Constants.PLAYERS))
         {
             for (Player p : GameManager.playerList)
             {
                 p.useCard(pollution.quantity, money.quantity, volunteers.quantity);
             }
         }
-        else if (qT.target == Constants.FACTORY)
+        else if (qT.target.equals(Constants.FACTORY))
         {
             GameManager.eFactoryList.get(GameManager.eFactoryTurn).useCard
                     (affinity.quantity, pollution.quantity);
         }
-        else if (qT.target == Constants.FACTORIES)
+        else if (qT.target.equals(Constants.FACTORIES))
         {
             for (EvilFactory f : GameManager.eFactoryList)
             {

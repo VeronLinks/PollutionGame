@@ -17,7 +17,7 @@ public class Player extends GameObject
 
     public boolean canAfford(Cost cost)
     {
-        if (money >= cost.money && volunteers >= cost.volunteers)
+        if (money >= cost.money && (volunteers - 1) >= cost.volunteers)
         {
             money -= cost.money;
             return true;

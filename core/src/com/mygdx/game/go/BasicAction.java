@@ -74,8 +74,7 @@ public class BasicAction extends GameObject{
 
     private void targetedUse(QuantityTarget qT)
     {
-        //System.out.println(qT.target);
-        if (qT.target == Constants.SELF)
+        if (qT.target.equals(Constants.SELF))
         {
             GameManager.playerList.get(GameManager.turn).useCard
                     (0, money.quantity, volunteers.quantity);
