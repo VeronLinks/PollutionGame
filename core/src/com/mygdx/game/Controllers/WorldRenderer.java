@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Constants;
+import com.mygdx.game.GameLogic.EvilFactory;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.GameLogic.Player;
 import com.mygdx.game.go.Background;
@@ -186,13 +187,13 @@ public class WorldRenderer {
         Assets.getInstance().mediumFont.setColor(Color.BLACK);
         for(int i=0;i<totalFactories;i++){
             batch.draw(Assets.getInstance().factoryIcon, x+offset*i+w*i, y, w, h);
-            renderFactoryBars(x+offset*(i)+w*(i+1)+offset/10);
+            renderFactoryBars(x+offset*(i)+w*(i+1)+offset/10, i);
         }
         batch.setColor(Color.WHITE);
         Assets.getInstance().mediumFont.setColor(Color.WHITE);
     }
 
-    private void renderFactoryBars(int x){
+    private void renderFactoryBars(int x, int index){
         int totalBars = 6;
         int y = (int)(WorldController.camera.viewportHeight/3.4f);
         int w = (int) WorldController.camera.viewportWidth/48;
@@ -206,6 +207,11 @@ public class WorldRenderer {
             batch.draw(Assets.getInstance().white, x, y+h*i+offset*i, w, h);
             batch.draw(Assets.getInstance().white, x+offsetBar2+w, y+h*i+offset*i, w, h);
         }
+        EvilFactory e = GameManager.eFactoryList.get(index);
+        int b = e.bankruptcy-1;
+        int a = e.affinity-1;
+        batch.draw(Assets.getInstance().coin, x, y+h*b+offset*b, w, h);
+        batch.draw(Assets.getInstance().cloud, x+offsetBar2+w, y+h*a+offset*a, w, h);
         batch.setColor(Color.WHITE);
         Assets.getInstance().mediumFont.setColor(Color.WHITE);
     }
