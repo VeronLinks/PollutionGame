@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class WorldRenderer {
 
+    public static Color[] colors = new Color[4];
+
     private OrthographicCamera camera;
     private OrthographicCamera hudCamera,pauseCamera;
     private SpriteBatch batch;
@@ -28,7 +30,6 @@ public class WorldRenderer {
     private HUD hud,pauseHUD;
     private GameManager GM =GameManager.getInstance();
 
-    private Color[] colors = new Color[4];
 
     public WorldRenderer(WorldController wc){
         this.controller = wc;
