@@ -13,7 +13,7 @@ public class MobileInputHandler implements InputController {
     private boolean inputPause;
     private boolean inputSelect;
 
-    private GameManager GM =GameManager.getInstance();
+    private GameManager GM = GameManager.getInstance();
     private Vector3 pointHUD, pointGame;
 
     private WorldController controller;

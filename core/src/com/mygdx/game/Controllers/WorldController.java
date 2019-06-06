@@ -28,10 +28,6 @@ public class WorldController {
         camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
         hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-
-
-
-
         //Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
 

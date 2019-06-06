@@ -7,9 +7,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
+import com.mygdx.game.Controllers.WorldController;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.hud.HUD;
 import com.mygdx.game.hud.HUDElement;
 import com.mygdx.game.hud.TextButton;
 
@@ -19,56 +23,66 @@ import java.util.ArrayList;
 
 public class MenuScreen implements Screen {
 
-    Game game;
+    MyGdxGame game;
     BitmapFont font;
     SpriteBatch batch;
     OrthographicCamera camera;
     int playersNumber;
-    ArrayList<TextButton> elements;
+    HUD hud;
+    float buttonWidth = 120, buttonHeight = 40;
 
     public MenuScreen(Game game) {
-        this.game = game;
+        this.game = (MyGdxGame)game;
         font = Assets.getInstance().bigFont;
         batch = new SpriteBatch();
-        camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        camera = WorldController.camera;
+        hud = GameManager.getInstance().hud;
 
-        //
+        init();
+    }
 
-        elements = new ArrayList<TextButton>();
-
+    public void init()
+    {
+        playersNumber = 0;
     }
 
     @Override
     public void show() {
 
-        TextButton b1 = new TextButton("2",10,10,120,40) {
+        TextButton b1 = new TextButton("2",-buttonWidth,buttonHeight * 3.5f, buttonWidth*2, buttonHeight*2) {
             @Override
             public void click() {
                 System.out.println("E1");
                 playersNumber = 2;
+                hud.clear();
+                GameManager.getInstance().gameInit(playersNumber);
                 game.setScreen(((MyGdxGame) game).gameScreen);
             }
         };
-        TextButton b2 = new TextButton("3",10,80,120,40){
+        TextButton b2 = new TextButton("3",-buttonWidth,buttonHeight, buttonWidth*2, buttonHeight*2){
             @Override
             public void click()
             {
                 System.out.println("E2");
                 playersNumber = 3;
+                hud.clear();
+                GameManager.getInstance().gameInit(playersNumber);
                 game.setScreen(((MyGdxGame) game).gameScreen);
             }
         };
-        TextButton b3 = new TextButton("4",10,150,120,40) {
+        TextButton b3 = new TextButton("4",-buttonWidth,-buttonHeight * 1.5f, buttonWidth*2, buttonHeight*2) {
             @Override
             public void click() {
                 System.out.println("E3");
                 playersNumber = 4;
+                hud.clear();
+                GameManager.getInstance().gameInit(playersNumber);
                 game.setScreen(((MyGdxGame) game).gameScreen);
             }
         };
-        elements.add(b1);
-        elements.add(b2);
-        elements.add(b3);
+        hud.add(b1);
+        hud.add(b2);
+        hud.add(b3);
     }
 
     @Override
@@ -79,23 +93,6 @@ public class MenuScreen implements Screen {
 
         ((MyGdxGame)game).input.update(Gdx.graphics.getDeltaTime());
 
-        /*//update
-        if (Gdx.input.isTouched())
-        {
-            if (Gdx.input.getX() < Gdx.graphics.getWidth() / 3)
-            {
-                playersNumber = 2;
-            }
-            else if (Gdx.input.getX() < Gdx.graphics.getWidth() * 2 / 3)
-            {
-                playersNumber = 3;
-            }
-            else
-            {
-                playersNumber = 4;
-            }
-        }*/
-
         //render
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -105,9 +102,7 @@ public class MenuScreen implements Screen {
 
         font.draw(batch,"Choose how many players will play", -camera.viewportWidth/2,camera.viewportHeight/3,camera.viewportWidth, Align.center,true);
 
-        for(HUDElement he : elements){
-            he.render(batch);
-        }
+        hud.render(batch);
 
         batch.end();
 
@@ -115,9 +110,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        camera.viewportHeight = height;
-        camera.viewportWidth = width;
-        camera.update();
+        game.renderer.resize(width, height);
     }
 
     @Override

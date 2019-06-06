@@ -1,6 +1,8 @@
 package com.mygdx.game.hud;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.Controllers.WorldController;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,12 @@ public class HUD {
 
     public void add(HUDElement label) {
         labels.add(label);
+    }
+
+    public void clear()
+    {
+        labels.clear();
+        buttons.clear();
     }
 
     public void render(SpriteBatch batch) {

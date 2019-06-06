@@ -72,14 +72,6 @@ public class WorldRenderer {
 
     public void resize(int width, int height){
 
-        hudCamera.viewportWidth = width;
-        hudCamera.viewportHeight = height;
-
-        //0,0 in the lower left corner
-        hudCamera.position.x = width / 2;
-        hudCamera.position.y = height / 2;
-        hudCamera.update();
-
         if((float)width/height < Constants.VIEWPORT_RATIO){
             camera.viewportWidth = Constants.VIEWPORT_WIDTH;
             camera.viewportHeight = (Constants.VIEWPORT_WIDTH/width)*height;
@@ -88,6 +80,9 @@ public class WorldRenderer {
             camera.viewportHeight = Constants.VIEWPORT_HEIGHT;
             camera.viewportWidth = (Constants.VIEWPORT_HEIGHT/height)*width;
         }
+        hudCamera.viewportHeight = camera.viewportHeight;
+        hudCamera.viewportWidth = camera.viewportWidth;
+        hudCamera.update();
 
         Gdx.app.debug("RESIZE", "" + camera.viewportWidth / camera.viewportHeight);
         camera.update();

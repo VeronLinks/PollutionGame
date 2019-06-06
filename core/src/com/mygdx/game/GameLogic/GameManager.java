@@ -22,51 +22,56 @@ public class GameManager
     public ArrayList<EvilFactory> eFactoryList;
     public ArrayList<GameObject> cardsOnBoard;
     public int turn;
-    public static int jugadores;
+    public static int players = 0;
     public HUD hud;
     public GameStats gameStats;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
 
-    private GameManager(int jugadores)
+    private GameManager()
     {
         turn = 0;
-        this.jugadores=jugadores;
 
         eFactoryList = new ArrayList<EvilFactory>();
         playerList = new ArrayList<Player>();
         cardsOnBoard = new ArrayList<GameObject>();
 
-        for(int i=0;i<jugadores;i++)
+        for(int i = 0; i < players; i++)
         {
             playerList.add(new Player());
         }
 
-        for(int i=0;i< Constants.NUMBER_EVIL_FACTORIES;i++)
+        for(int i=0;i < Constants.NUMBER_EVIL_FACTORIES;i++)
         {
             eFactoryList.add(new EvilFactory());
         }
 
+        hud = new HUD();
+    }
+
+    public void gameInit(int numOfPlayers)
+    {
+        players = numOfPlayers;
         createMasterDeck();
-        createHUD();
+        fillHUD();
     }
 
     public static GameManager getInstance()
     {
         if(instance==null){
-            instance = new GameManager(jugadores);
+            instance = new GameManager();
         }
         return instance;
     }
 
     public void nextTurn()
     {
-        if(turn==jugadores-1)
+        if(turn== players -1)
         {
             EvilTurn();
         }
-            turn+=1%jugadores;
+            turn+=1% players;
     }
 
     public void EvilTurn()
@@ -84,9 +89,8 @@ public class GameManager
         System.out.println(factory.cards.size() + " cards in the master deck");
     }
 
-    private void createHUD()
+    private void fillHUD()
     {
-        hud = new HUD();
         TextButton b1 = new TextButton("CARD", 10, 10, 120, 40) {
             @Override
             public void click() {

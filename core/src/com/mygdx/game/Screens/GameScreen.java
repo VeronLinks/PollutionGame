@@ -13,11 +13,9 @@ public class GameScreen implements Screen {
     WorldController controller;
     WorldRenderer renderer;
     Game game;
-    MenuScreen menu;
 
     public GameScreen(Game game) {
         this.game = game;
-        this.menu = ((MyGdxGame)game).menuScreen;
     }
 
 
