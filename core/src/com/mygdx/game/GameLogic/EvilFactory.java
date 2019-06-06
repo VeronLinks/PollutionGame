@@ -18,6 +18,12 @@ public class EvilFactory extends GameObject
 
     }
 
+    public void useCard(int affinity, int bankruptcy)
+    {
+        this.affinity += affinity;
+        this.bankruptcy += bankruptcy;
+    }
+
     @Override
     public void update(float elapsedTime) {
 

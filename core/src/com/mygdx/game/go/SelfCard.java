@@ -41,7 +41,7 @@ public class SelfCard extends GameObject {
         description = "\n+ "+volunteers+" volunteers\n" + "+ "+money+" money\n";
     }
 
-    public void use(GameStats stats) {
+    public void use() {
         GameManager.playerList.get(GameManager.turn).useCard(0, money, volunteers);
 
         SoundManager.getInstance().click.play();

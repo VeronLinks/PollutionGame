@@ -9,4 +9,10 @@ public class Constants {
     public final static float VIEWPORT_RATIO = VIEWPORT_WIDTH/VIEWPORT_HEIGHT;
     public final static int NUMBER_EVIL_FACTORIES = 4;
 
+    // Strings for Target
+    public final static String SELF = "SELF";
+    public final static String FACTORY = "TARGET_FACTORY";
+    public final static String PLAYERS = "ALL_PLAYERS";
+    public final static String FIRST_PLAYER = "FIRST_PLAYER";
+    public final static String FACTORIES = "ALL_FACTORIES";
 }

@@ -5,7 +5,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
+import com.mygdx.game.Constants;
+import com.mygdx.game.GameLogic.EvilFactory;
 import com.mygdx.game.GameLogic.GameManager;
+import com.mygdx.game.GameLogic.Player;
 import com.mygdx.game.SoundManager;
 import com.mygdx.game.go.AuxiliarClasses.QuantityTarget;
 import com.mygdx.game.hud.GameStats;
@@ -44,15 +47,50 @@ public class FactoryCard extends GameObject {
         GM = GameManager.getInstance();
     }
 
-    public void use(GameStats stats) {
-        // Aquí depende de si afecta a un player o a todos, pero habrá que cambiarlo
-        GameManager.playerList.get(GameManager.turn).useCard(pollution.quantity, money.quantity, volunteers.quantity);
-
-        // Aquí lo que modifique la bankrupty y la afinidad
+    public void use() {
 
         SoundManager.getInstance().click.play();
 
+        targetedUse(money);
+        targetedUse(volunteers);
+        targetedUse(pollution);
+        targetedUse(affinity);
+        targetedUse(bankrupty);
+
         GameManager.getInstance().nextTurn();
+    }
+
+    private void targetedUse(QuantityTarget qT)
+    {
+        if (qT.target == Constants.SELF)
+        {
+            GameManager.playerList.get(GameManager.turn).useCard
+                    (pollution.quantity, money.quantity, volunteers.quantity);
+        }
+        else if (qT.target == Constants.FIRST_PLAYER)
+        {
+            GameManager.playerList.get(GameManager.startedLastTurn).useCard
+                    (pollution.quantity, money.quantity, volunteers.quantity);
+        }
+        else if (qT.target == Constants.PLAYERS)
+        {
+            for (Player p : GameManager.playerList)
+            {
+                p.useCard(pollution.quantity, money.quantity, volunteers.quantity);
+            }
+        }
+        else if (qT.target == Constants.FACTORY)
+        {
+            GameManager.eFactoryList.get(GameManager.eFactoryTurn).useCard
+                    (affinity.quantity, pollution.quantity);
+        }
+        else if (qT.target == Constants.FACTORIES)
+        {
+            for (EvilFactory f : GameManager.eFactoryList)
+            {
+                f.useCard(affinity.quantity, pollution.quantity);
+            }
+        }
     }
 
     @Override

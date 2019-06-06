@@ -20,10 +20,14 @@ public class GameManager
     public static ArrayList<EvilFactory> eFactoryList;
     public static ArrayList<GameObject> cardsOnBoard;
     public static int turn;
+    public static int eFactoryTurn;
     public static int players = 1;
     public static HUD hud;
     public static GameStats gameStats;
-    public Player currentPlayer;
+    public static Player currentPlayer;
+    public static int startedLastTurn;
+
+    private static int numberOfTurns;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
@@ -31,6 +35,7 @@ public class GameManager
     private GameManager()
     {
         turn = 0;
+        numberOfTurns = 0;
 
         eFactoryList = new ArrayList<EvilFactory>();
         playerList = new ArrayList<Player>();
@@ -58,7 +63,7 @@ public class GameManager
 
     public static GameManager getInstance()
     {
-        if(instance==null){
+        if(instance == null){
             instance = new GameManager();
         }
         return instance;
@@ -66,28 +71,38 @@ public class GameManager
 
     public void nextTurn()
     {
-        if(turn == players)
+        if(numberOfTurns == players)
         {
             EvilTurn();
         }
         else {
             PlayerTurn();
-            turn += 1;
         }
     }
 
     public void PlayerTurn()
     {
+        if (turn == players)
+        {
+            turn = 0;
+        }
         currentPlayer = playerList.get(turn);
+        turn++;
     }
 
     private void EvilTurn()
     {
-        for(int i=0; i < Constants.NUMBER_EVIL_FACTORIES; i++)
+        for(eFactoryTurn = 0; eFactoryTurn < Constants.NUMBER_EVIL_FACTORIES; eFactoryTurn++)
         {
-            //aqui se mete el uso de la carta que usa la factory.
+            // AQUÍ METER LA LLAMADA A LA CARTA DE FACTORÍA Y SU USO
         }
-        turn = 0;
+        numberOfTurns = 0;
+        startedLastTurn += 1;
+        if (startedLastTurn == players)
+        {
+            startedLastTurn = 0;
+        }
+        turn = startedLastTurn;
     }
 
     private void createMasterDeck()
