@@ -56,7 +56,6 @@ public class DesktopInputHandler implements InputController {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        System.out.println("Click");
         //screen touched, corresponds to a HUD button?
         pointHUD = new Vector3(screenX, screenY, 0);
 
