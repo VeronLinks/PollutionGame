@@ -62,12 +62,6 @@ public class DesktopInputHandler implements InputController {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         //screen touched, corresponds to a HUD button?
         pointHUD = new Vector3(screenX, screenY, 0);
-        pointPause = new Vector3(screenX, screenY, 0);
-        if(GameManager.isPaused) {
-            //check if the click is for the pause HUD
-            controller.pauseCamera.unproject(pointPause);
-            GameManager.pauseHUD.click(pointPause.x, pointPause.y);
-        }
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
 
@@ -119,7 +113,14 @@ public class DesktopInputHandler implements InputController {
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(int screenX, int screenY, int pointer, int button)
+    {
+        pointPause = new Vector3(screenX, screenY, 0);
+        if(GameManager.isPaused) {
+            //check if the click is for the pause HUD
+            controller.pauseCamera.unproject(pointPause);
+            GameManager.pauseHUD.click(pointPause.x, pointPause.y);
+        }
         return false;
     }
 
