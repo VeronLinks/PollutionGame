@@ -5,13 +5,20 @@ import com.mygdx.game.go.GameObject;
 
 public class Player extends GameObject
 {
-    public int pollution,money,volunteers;
+    public int pollution, money, volunteers;
 
-    Player()
+    public Player()
     {
         pollution = 0;
         money = 2;
         volunteers = 1;
+    }
+
+    public void useCard(int pollution, int money, int volunteers)
+    {
+        this.pollution += pollution;
+        this.money += money;
+        this.volunteers += volunteers;
     }
 
     @Override
