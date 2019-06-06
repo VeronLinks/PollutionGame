@@ -73,8 +73,8 @@ public class SelectedCard extends GameObject {
         //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
         //batch.setColor(Color.BLACK);
         Assets.getInstance().GameFont.setColor(Color.BLACK);
-        Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2f, textBounds.width, Align.center, true);
-        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2.13f, textBounds.width, Align.center, true);
+        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 1.65f, textBounds.width, Align.center, true);
 
     }
 
