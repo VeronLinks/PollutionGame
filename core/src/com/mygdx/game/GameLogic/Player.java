@@ -10,14 +10,14 @@ public class Player extends GameObject
 
     public Player()
     {
-        pollution = 0;
+        pollution = 1;
         money = 2;
         volunteers = 1;
     }
 
     public boolean canAfford(Cost cost)
     {
-        if (money >= cost.money && (volunteers - 1) >= cost.volunteers)
+        if (money >= cost.money && volunteers >= cost.volunteers)
         {
             money -= cost.money;
             return true;
@@ -30,6 +30,19 @@ public class Player extends GameObject
         this.pollution += pollution;
         this.money += money;
         this.volunteers += volunteers;
+
+        if (this.money < 0)
+        {
+            this.money = 0;
+        }
+        if (this.volunteers < 1)
+        {
+            this.volunteers = 1;
+        }
+        if (this.pollution < 1)
+        {
+            this.pollution = 1;
+        }
     }
 
     @Override
