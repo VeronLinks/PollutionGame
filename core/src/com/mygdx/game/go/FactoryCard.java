@@ -20,8 +20,8 @@ public class FactoryCard extends GameObject {
     QuantityTarget pollution;
     QuantityTarget affinity;
     QuantityTarget bankrupty;
-    //private Rectangle imageBounds;
-    //private Rectangle textBounds;
+    private Rectangle imageBounds;
+    private Rectangle textBounds;
 
 
      private GameManager GM;
@@ -39,8 +39,8 @@ public class FactoryCard extends GameObject {
      * manually called, as the Json builder is calling the default constructor without parameters.
      */
     public void init() {
-        //imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
-        //textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
+        imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
+        textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
         GM = GameManager.getInstance();
     }
 
@@ -69,8 +69,10 @@ public class FactoryCard extends GameObject {
         //batch.draw(Assets.getInstance().getTexture(tex), imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
 
         //text area
-        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        //Assets.getInstance().GameFont.draw(batch, text, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
+        batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
+        Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2f, textBounds.width, Align.center, true);
+        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
 
     }
 
