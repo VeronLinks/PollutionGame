@@ -154,7 +154,7 @@ public class GameManager
     public void PlayerTurn()
     {
         turn++;
-        if (turn == players)
+        if (turn >= players)
         {
             turn = 0;
         }

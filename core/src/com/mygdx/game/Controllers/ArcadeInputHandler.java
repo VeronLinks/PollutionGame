@@ -8,9 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.SoundManager;
-import com.mygdx.game.go.BasicAction;
-import com.mygdx.game.go.GameObject;
-import com.mygdx.game.go.SelectedCard;
+import com.mygdx.game.go.*;
 
 import static com.mygdx.game.GameLogic.GameManager.game;
 
@@ -55,8 +53,28 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                 case 3:
                 case 4:
                 case 5:
-                    ((SelectedCard) (GameManager.cardsOnBoard.get(buttonCode))).use();
-                    return true;
+                    switch (GameManager.state) {
+                        case GameManager.STATE_NONE:
+                            ((SelectedCard) (GameManager.cardsOnBoard.get(buttonCode))).use();
+                            return true;
+                        case GameManager.STATE_GAME_ACTIONS:
+                        case GameManager.STATE_PLAYER_ACTIONS:
+                            for (GameObject card : GameManager.currentSpecialCard) {
+                                if (card.active) {
+                                    if (card instanceof FactoryCard) {
+                                        ((FactoryCard) card).use();
+                                        break;
+                                    }
+                                    else if (card instanceof SelfCard)
+                                    {
+                                        ((SelfCard) card).use();
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+
+                    }
             }
         }
         else
