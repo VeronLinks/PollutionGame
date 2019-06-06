@@ -60,12 +60,14 @@ public class BasicAction extends GameObject{
 
     public void use() {
 
-        SoundManager.getInstance().click.play();
+        if (GameManager.playerList.get(GameManager.turn).canAfford(cost)) {
+            SoundManager.getInstance().click.play();
 
-        targetedUse(money);
-        targetedUse(volunteers);
+            targetedUse(money);
+            targetedUse(volunteers);
 
-        GameManager.getInstance().nextTurn();
+            GameManager.getInstance().nextTurn();
+        }
     }
 
     private void targetedUse(QuantityTarget qT)

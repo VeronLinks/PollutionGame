@@ -210,7 +210,7 @@ public class GameManager
         for(BasicAction b : factory.basicActions){
             basicActions.add(b);
         }
-        TextButton b1 = new TextButton("CARD", -WC.hudCamera.viewportWidth/2 + margin,
+        /*TextButton b1 = new TextButton("CARD", -WC.hudCamera.viewportWidth/2 + margin,
                 -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override
             public void click() {
@@ -221,7 +221,7 @@ public class GameManager
                 cardsOnBoard.add(c);
             }
         };
-        hud.add(b1);
+        hud.add(b1);*/
         gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240 + margin * 2,
                 -WC.hudCamera.viewportHeight/2 + 40 + margin);
         hud.add(gameStats);
