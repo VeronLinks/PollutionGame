@@ -1,5 +1,6 @@
 package com.mygdx.game.Controllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,6 +9,7 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.Constants;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Background;
+import com.mygdx.game.go.BasicAction;
 import com.mygdx.game.go.GameObject;
 import com.mygdx.game.hud.HUD;
 
@@ -49,6 +51,10 @@ public class WorldRenderer {
     public void render(){
 
         ArrayList<GameObject> gameObjects = GM.cardsOnBoard;
+        for(GameObject b : GM.basicActions){
+
+            gameObjects.add(b);
+        }
 
         batch.setColor(Color.WHITE);
         batch.setProjectionMatrix(camera.combined);
