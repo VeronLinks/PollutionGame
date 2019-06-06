@@ -2,6 +2,7 @@ package com.mygdx.game.GameLogic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.game.Constants;
 import com.mygdx.game.Controllers.WorldController;
@@ -156,6 +157,19 @@ public class GameManager
         }
         turn = startedLastTurn;
         nextTurn();
+    }
+
+    public void deleteUsedCard(Vector2 position)
+    {
+        for (int i = 0; i < Constants.MAX_CARDS; i++)
+        {
+            if (cardsOnBoard.get(i) instanceof SelectedCard && cardsOnBoard.get(i).position == position)
+            {
+                System.out.println("CARD DELETED");
+                cardsOnBoard.remove(i);
+                return;
+            }
+        }
     }
 
     private void createMasterDeck()

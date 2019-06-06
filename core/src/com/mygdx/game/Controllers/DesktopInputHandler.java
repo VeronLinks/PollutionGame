@@ -60,7 +60,7 @@ public class DesktopInputHandler implements InputController {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         //screen touched, corresponds to a HUD button?
         pointHUD = new Vector3(screenX, screenY, 0);
-
+        
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
         if (!GM.hud.click(pointHUD.x, pointHUD.y)) {

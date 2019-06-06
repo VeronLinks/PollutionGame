@@ -16,6 +16,7 @@ import com.mygdx.game.hud.GameStats;
 
 public class SelectedCard extends GameObject {
 
+    public boolean active = true;
     int id;
     String name;
     String description;
@@ -51,20 +52,22 @@ public class SelectedCard extends GameObject {
 
     public void use() {
 
-        if (GameManager.playerList.get(GameManager.turn).canAfford(cost)) {
-            SoundManager.getInstance().click.play();
+        if (active) {
+            if (GameManager.playerList.get(GameManager.turn).canAfford(cost)) {
+                SoundManager.getInstance().click.play();
 
-            targetedUse(money);
-            targetedUse(volunteers);
-            targetedUse(pollution);
-            targetedUse(affinity);
-            targetedUse(bankrupty);
+                targetedUse(money);
+                targetedUse(volunteers);
+                targetedUse(pollution);
+                targetedUse(affinity);
+                targetedUse(bankrupty);
 
-            GameManager.getInstance().nextTurn();
-        }
-        else
-        {
-            SoundManager.getInstance().error.play();
+                active = false;
+
+                GameManager.getInstance().nextTurn();
+            } else {
+                SoundManager.getInstance().error.play();
+            }
         }
     }
 
@@ -104,26 +107,27 @@ public class SelectedCard extends GameObject {
 
     @Override
     public void render(SpriteBatch batch) {
-        //color for the card background, the card assets is white and then tinted
-        //batch.setColor(c);
-        batch.draw(Assets.getInstance().card_ONG, position.x, position.y, dimension.x, dimension.y);
-        batch.setColor(Color.WHITE);
+        if (active) {
+            //color for the card background, the card assets is white and then tinted
+            //batch.setColor(c);
+            batch.draw(Assets.getInstance().card_ONG, position.x, position.y, dimension.x, dimension.y);
+            batch.setColor(Color.WHITE);
 
-        //image area
-        //batch.draw(Assets.getInstance().black, imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
-        //batch.draw(Assets.getInstance().getTexture(tex), imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
+            //image area
+            //batch.draw(Assets.getInstance().black, imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
+            //batch.draw(Assets.getInstance().getTexture(tex), imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
 
-        //text area
-        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
-        //batch.setColor(Color.BLACK);
-        Assets.getInstance().GameFont.setColor(Color.BLACK);
-        Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2.13f, textBounds.width, Align.center, true);
-        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 1.65f, textBounds.width, Align.center, true);
-        Assets.getInstance().mediumFont.setColor(Color.WHITE);
-        Assets.getInstance().mediumFont.draw(batch, ""+cost.volunteers, textBounds.x - textBounds.width/2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
-        Assets.getInstance().mediumFont.draw(batch, ""+cost.money, textBounds.x + textBounds.width/2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
-
+            //text area
+            //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
+            //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
+            //batch.setColor(Color.BLACK);
+            Assets.getInstance().GameFont.setColor(Color.BLACK);
+            Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2.13f, textBounds.width, Align.center, true);
+            Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 1.65f, textBounds.width, Align.center, true);
+            Assets.getInstance().mediumFont.setColor(Color.WHITE);
+            Assets.getInstance().mediumFont.draw(batch, "" + cost.volunteers, textBounds.x - textBounds.width / 2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
+            Assets.getInstance().mediumFont.draw(batch, "" + cost.money, textBounds.x + textBounds.width / 2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
+        }
     }
 
     @Override

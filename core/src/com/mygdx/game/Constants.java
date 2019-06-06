@@ -12,6 +12,7 @@ public class Constants {
     public final static int MAX_AFFINITY = 6;
     public final static int MAX_BANKRUP = 6;
     public final static int MAX_POLLUTION = 16;
+    public final static int MAX_CARDS = 6;
 
     // Strings for Target
     public final static String SELF = "SELF";
