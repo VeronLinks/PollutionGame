@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Constants;
 import com.mygdx.game.GameLogic.GameManager;
@@ -74,6 +75,7 @@ public class WorldRenderer {
         batch.setColor(Color.WHITE);
         renderPollutionBar(batch);
         renderPlayers(batch);
+        renderFactoryCardsBar(batch);
         batch.end();
 
         //render HUD
@@ -117,13 +119,35 @@ public class WorldRenderer {
         int h = (int) WorldController.camera.viewportHeight/35;
         int offset = (int) WorldController.camera.viewportHeight/100;
         batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
+        Assets.getInstance().mediumFont.setColor(Color.BLACK);
         for(int i=0;i<totalBars;i++){
-            if(i<12){
+            if(i<greenBars){
                 batch.draw(Assets.getInstance().green, x, y+h*i+offset*i, w, h);
             }else{
                 batch.draw(Assets.getInstance().red, x, y+h*i+offset*i, w, h);
             }
+            Assets.getInstance().mediumFont.draw(batch, "" + (i+1), x+w/1.3f, y+h*(i+1)+offset*i, w, Align.center, true);
         }
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
+    }
+
+    private void renderFactoryCardsBar(SpriteBatch batch){
+        int totalBars = 7;
+        int x = (int)(WorldController.camera.viewportWidth/2.55f);
+        int y = (int)(WorldController.camera.viewportHeight/5f);
+        int w = (int) WorldController.camera.viewportHeight/10;
+        int h = (int) WorldController.camera.viewportHeight/35;
+        int offset = (int) WorldController.camera.viewportHeight/100;
+        batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
+        Assets.getInstance().mediumFont.setColor(Color.BLACK);
+        for(int i=0;i<totalBars;i++){
+            batch.setColor(Color.GRAY);
+            batch.draw(Assets.getInstance().white, x, y+h*i+offset*i, w, h);
+            Assets.getInstance().mediumFont.draw(batch, "" + (i+1), x+w/1.3f, y+h*(i+1)+offset*i, w, Align.center, true);
+
+        }
+        batch.setColor(Color.WHITE);
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
     }
 
     private void renderPlayers(SpriteBatch batch){
