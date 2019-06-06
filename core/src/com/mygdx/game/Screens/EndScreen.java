@@ -47,7 +47,7 @@ public class EndScreen implements Screen {
             public void click() {
                 SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                 hud.clear();
-                game.setScreen(((MyGdxGame) game).menuScreen);
+                game.setScreen(game.menuScreen);
             }
         };
         hud.add(b1);

@@ -64,7 +64,7 @@ public class DesktopInputHandler implements InputController {
         pointHUD = new Vector3(screenX, screenY, 0);
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
-
+        GM.hud.click(pointHUD.x, pointHUD.y);
         switch (GameManager.state) {
             case GameManager.STATE_NONE:
                 if (!GM.hud.click(pointHUD.x, pointHUD.y) && !GameManager.isPaused) {
