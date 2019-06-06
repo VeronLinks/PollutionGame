@@ -25,13 +25,16 @@ public class GameStats extends HUDElement {
         if (GameManager.getInstance().currentPlayer != null) {
             pollutionLabel.text = "Pollution level: " + GameManager.getInstance().currentPlayer.pollution;
             moneyLabel.text = "Money: " + GameManager.getInstance().currentPlayer.money + "$";
-            moneyLabel.text = "Volunteers: " + GameManager.getInstance().currentPlayer.volunteers;
+            volunteers.text = "Volunteers: " + GameManager.getInstance().currentPlayer.volunteers;
         }
         else
         {
             pollutionLabel.text = "Pollution level: " + "FUCK";
             moneyLabel.text = "Money: " + "MY";
-            moneyLabel.text = "Volunteers: " + "LIFE";
+            volunteers.text = "Volunteers: " + "LIFE";
         }
+        pollutionLabel.render(batch);
+        moneyLabel.render(batch);
+        volunteers.render(batch);
     }
 }

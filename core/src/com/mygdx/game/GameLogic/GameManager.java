@@ -114,7 +114,8 @@ public class GameManager
             }
         };
         hud.add(b1);
-        gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240, -WC.hudCamera.viewportHeight/2 + 40);
+        gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240 + margin * 2,
+                -WC.hudCamera.viewportHeight/2 + 40 + margin);
         hud.add(gameStats);
     }
 }
