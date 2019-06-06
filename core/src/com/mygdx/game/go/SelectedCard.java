@@ -2,6 +2,7 @@ package com.mygdx.game.go;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
@@ -92,7 +93,7 @@ public class SelectedCard extends GameObject {
         }
         else if (qT.target.equals(Constants.FACTORY))
         {
-            GameManager.eFactoryList.get(GameManager.eFactoryTurn).useCard
+            GameManager.eFactoryList.get(MathUtils.random(0, Constants.NUMBER_EVIL_FACTORIES - 1)).useCard
                     (affinity.quantity, pollution.quantity);
         }
         else if (qT.target.equals(Constants.FACTORIES))

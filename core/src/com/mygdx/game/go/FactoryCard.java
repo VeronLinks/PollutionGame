@@ -25,9 +25,13 @@ public class FactoryCard extends GameObject {
     QuantityTarget bankrupty;
     private Rectangle imageBounds;
     private Rectangle textBounds;
+    private int factoryNumber;
 
+    public void setFactoryNumber(int factoryNumber) {
+        this.factoryNumber = factoryNumber;
+    }
 
-     private GameManager GM;
+    private GameManager GM;
     /**
      * will be called by the JSON populator
      */
@@ -81,7 +85,7 @@ public class FactoryCard extends GameObject {
         }
         else if (qT.target.equals(Constants.FACTORY))
         {
-            GameManager.eFactoryList.get(GameManager.eFactoryTurn).useCard
+            GameManager.eFactoryList.get(factoryNumber).useCard
                     (affinity.quantity, pollution.quantity);
         }
         else if (qT.target.equals(Constants.FACTORIES))

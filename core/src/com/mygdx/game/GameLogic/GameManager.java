@@ -55,6 +55,7 @@ public class GameManager
         turn = 0;
         numberOfTurns = 1;
         startedLastTurn = 0;
+        eFactoryTurn = 0;
         state = STATE_NONE;
 
         eFactoryList = new ArrayList<EvilFactory>();
@@ -168,7 +169,7 @@ public class GameManager
         {
             if (eFactoryList.get(eFactoryTurn).affinity < Constants.MAX_AFFINITY)
             {
-                currentSpecialCard.add(factory.gimmeRandomFactoryCard());
+                currentSpecialCard.add(factory.gimmeRandomFactoryCard(eFactoryTurn));
             }
         }
         // Check somewhere these conditions. If state, thow the cards in currentSpecialCard.

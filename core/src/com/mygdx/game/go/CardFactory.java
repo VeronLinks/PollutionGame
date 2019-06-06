@@ -77,7 +77,7 @@ public class CardFactory {
     }
 
     public ArrayList <FactoryCard> factory_cards;
-    public FactoryCard gimmeRandomFactoryCard(){
+    public FactoryCard gimmeRandomFactoryCard(int factoryNumber){
         FactoryCard copy = new FactoryCard();
         FactoryCard original = factory_cards.get(MathUtils.random(0, factory_cards.size() -1));
 
@@ -101,6 +101,8 @@ public class CardFactory {
         copy.bankrupty.target = original.bankrupty.target;
 
         copy.init();
+
+        copy.setFactoryNumber(factoryNumber);
 
         return copy;
     }
