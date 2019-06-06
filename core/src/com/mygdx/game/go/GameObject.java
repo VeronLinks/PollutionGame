@@ -12,7 +12,7 @@ public abstract class GameObject {
     Vector2 speed;
     private Rectangle bounds;
 
-    GameObject() {
+    public GameObject() {
         position = new Vector2(0, 0);
         dimension = new Vector2(1, 1);
         speed = new Vector2(0, 0);

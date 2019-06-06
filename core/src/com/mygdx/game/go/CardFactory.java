@@ -1,7 +1,6 @@
 package com.mygdx.game.go;
 
 import com.badlogic.gdx.math.MathUtils;
-import sun.security.smartcardio.SunPCSC;
 
 import java.util.ArrayList;
 
