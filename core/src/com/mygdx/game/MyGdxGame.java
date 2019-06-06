@@ -22,7 +22,7 @@ public class MyGdxGame extends Game {
 
 		controller = WorldController.getInstance();
 		renderer = new WorldRenderer(controller);
-
+		SoundManager.getInstance();
 
 		if(Gdx.app.getType() == Application.ApplicationType.Desktop){
 

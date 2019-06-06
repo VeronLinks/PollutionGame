@@ -91,7 +91,9 @@ public class GameManager
 
     private void fillHUD()
     {
-        TextButton b1 = new TextButton("CARD", 10, 10, 120, 40) {
+        float margin = 30;
+        TextButton b1 = new TextButton("CARD", -WC.hudCamera.viewportWidth/2 + margin,
+                -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override
             public void click() {
                 Card c = factory.gimmeRandomCard();
@@ -102,7 +104,7 @@ public class GameManager
             }
         };
         hud.add(b1);
-        gameStats = new GameStats(200, 40);
+        gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240 + margin * 3, -WC.hudCamera.viewportHeight/2 + 40 + margin/2);
         hud.add(gameStats);
     }
 }

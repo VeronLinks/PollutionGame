@@ -13,6 +13,7 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.Controllers.WorldController;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.SoundManager;
 import com.mygdx.game.hud.HUD;
 import com.mygdx.game.hud.HUDElement;
 import com.mygdx.game.hud.TextButton;
@@ -52,6 +53,7 @@ public class MenuScreen implements Screen {
         TextButton b1 = new TextButton("2",-buttonWidth,buttonHeight * 3.5f, buttonWidth*2, buttonHeight*2) {
             @Override
             public void click() {
+                SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                 System.out.println("E1");
                 playersNumber = 2;
                 hud.clear();
@@ -63,6 +65,7 @@ public class MenuScreen implements Screen {
             @Override
             public void click()
             {
+                SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                 System.out.println("E2");
                 playersNumber = 3;
                 hud.clear();
@@ -73,6 +76,7 @@ public class MenuScreen implements Screen {
         TextButton b3 = new TextButton("4",-buttonWidth,-buttonHeight * 1.5f, buttonWidth*2, buttonHeight*2) {
             @Override
             public void click() {
+                SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                 System.out.println("E3");
                 playersNumber = 4;
                 hud.clear();

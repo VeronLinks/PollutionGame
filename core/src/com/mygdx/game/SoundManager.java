@@ -7,10 +7,12 @@ public class SoundManager
 {
     private static SoundManager instance;
 
-    public Sound click,badCard1,badCard2,goodCard1,goodCard2,mainTheme1,mainTheme2,mainMenu;
+    public static float sfxVolume, musicVolume;
+    public static Sound click, badCard1, badCard2, goodCard1, goodCard2, mainTheme1, mainTheme2, mainMenu, menuClick;
 
     private SoundManager()
     {
+        sfxVolume = musicVolume = 1f;
         click = Gdx.audio.newSound(Gdx.files.internal("Sounds/Click_1.wav"));
         badCard1 = Gdx.audio.newSound(Gdx.files.internal("Sounds/Chainsaw_1.wav"));
         badCard2 = Gdx.audio.newSound(Gdx.files.internal("Sounds/Chainsaw_2.wav"));
@@ -19,6 +21,7 @@ public class SoundManager
         mainTheme1 = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainTheme_1.wav"));
         mainTheme2 = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainTheme_2.wav"));
         mainMenu = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainMenu_1.wav"));
+        menuClick = Gdx.audio.newSound(Gdx.files.internal("Sounds/YouGotThatClick.wav"));
     }
 
     public static SoundManager getInstance()
