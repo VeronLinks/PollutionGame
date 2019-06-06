@@ -9,8 +9,11 @@ import com.mygdx.game.Screens.MenuScreen;
 
 /*
 	STILL TO DO:
-	- When pressing a card it should call its method use();
+	- We should be able to see enemy's affinity and bankrupt status.
+	- Make BasicActions work
+	- Make SelfCards not to explode and work instead.
 	- When it's the turn of the enemies, Show the card each enemy is going to use and, then, use it (in GameManager, where indicated)
+	- Make sure cards work.
  */
 
 public class MyGdxGame extends Game {

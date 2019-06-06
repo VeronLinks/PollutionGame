@@ -67,12 +67,14 @@ public class BasicAction extends GameObject{
             targetedUse(volunteers);
 
             GameManager.getInstance().nextTurn();
+        }else {
+            SoundManager.getInstance().error.play();
         }
     }
 
     private void targetedUse(QuantityTarget qT)
     {
-        System.out.println(qT.target);
+        //System.out.println(qT.target);
         if (qT.target == Constants.SELF)
         {
             GameManager.playerList.get(GameManager.turn).useCard

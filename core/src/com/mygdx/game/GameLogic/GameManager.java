@@ -44,7 +44,7 @@ public class GameManager
     private GameManager()
     {
         turn = 0;
-        numberOfTurns = 0;
+        numberOfTurns = 1;
         startedLastTurn = 0;
 
         eFactoryList = new ArrayList<EvilFactory>();
@@ -69,6 +69,7 @@ public class GameManager
     {
         players = numOfPlayers;
 
+        playerList.clear();
         for(int i = 0; i < players; i++)
         {
             playerList.add(new Player());
@@ -99,7 +100,7 @@ public class GameManager
         }
 
         // NOW GO ON WITH TURNS
-        if(numberOfTurns == players)
+        if(numberOfTurns >= players)
         {
             EvilTurn();
         }
@@ -149,14 +150,26 @@ public class GameManager
                 // AQUÍ METER LA LLAMADA A LA CARTA DE FACTORÍA Y SU USO
             }
         }
+        newTurn();
+    }
+
+    private void newTurn()
+    {
         numberOfTurns = 0;
         startedLastTurn += 1;
         if (startedLastTurn == players)
         {
             startedLastTurn = 0;
         }
-        turn = startedLastTurn;
         fillBoard();
+        for(int turn = 0; turn < players; turn++)
+        {
+            if (playerList.get(turn).pollution < Constants.MAX_POLLUTION)
+            {
+                factory.gimmeRandomSelfCard().use();
+            }
+        }
+        turn = startedLastTurn;
         nextTurn();
     }
 

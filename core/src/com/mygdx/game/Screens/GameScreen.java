@@ -25,11 +25,11 @@ public class GameScreen implements Screen {
     public void show() {
         controller = (game).controller;
         renderer = (game).renderer;
-        GameManager.getInstance().playerList.clear();
+        /*GameManager.getInstance().playerList.clear();
         for (int i = 0; i < GameManager.players; i++)
         {
             GameManager.getInstance().playerList.add(new Player());
-        }
+        }*/
         GameManager.getInstance().currentPlayer =
                 GameManager.getInstance().playerList.get(GameManager.getInstance().turn);
     }
