@@ -11,7 +11,7 @@ public class Constants {
     public final static int MAX_ENEMY_CARDS = 7;
     public final static int MAX_AFFINITY = 6;
     public final static int MAX_BANKRUP = 6;
-    public final static int MAX_POLLUTION = 15;
+    public final static int MAX_POLLUTION = 16;
     public final static int MAX_CARDS = 6;
 
     // Strings for Target
