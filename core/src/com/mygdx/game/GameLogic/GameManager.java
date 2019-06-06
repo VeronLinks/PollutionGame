@@ -117,6 +117,21 @@ public class GameManager
     private void fillHUD()
     {
         float margin = 30;
+        int maxCards = 6;
+        int x = (int)(-WC.camera.viewportWidth/6.5f);
+        int y = (int)-WC.camera.viewportHeight/10;
+        int offset = (int)(WC.camera.viewportWidth/5.5f);
+        for (int i=0;i<maxCards; i++){
+            SelectedCard c = factory.gimmeRandomSelectedCard();
+            c.position.x = x + offset*(i%3);
+            if(i<3){
+                c.position.y = y;
+            }else{
+                c.position.y = y - offset*1.1f;
+            }
+            c.init();
+            cardsOnBoard.add(c);
+        }
         TextButton b1 = new TextButton("CARD", -WC.hudCamera.viewportWidth/2 + margin,
                 -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override
