@@ -105,7 +105,7 @@ public class GameManager
                 -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override
             public void click() {
-                SelfCard c = factory.gimmeRandomSelfCard();
+                SelectedCard c = factory.gimmeRandomSelectedCard();
                 c.position.x = MathUtils.random(-WC.camera.viewportWidth / 3, WC.camera.viewportWidth / 3);
                 c.position.y = MathUtils.random(-WC.camera.viewportHeight / 3, WC.camera.viewportHeight / 3);
                 c.init();
