@@ -84,6 +84,7 @@ public class WorldRenderer {
             for (GameObject go : GameManager.currentSpecialCard) {
                 if (go.active) {
                     go.render(batch);
+                    break;
                 }
             }
         }
