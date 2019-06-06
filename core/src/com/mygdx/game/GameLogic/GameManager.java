@@ -81,6 +81,12 @@ public class GameManager
     {
         players = numOfPlayers;
 
+        isPaused = false;
+        turn = 0;
+        numberOfTurns = 1;
+        startedLastTurn = 0;
+        state = STATE_NONE;
+
         playerList.clear();
         for(int i = 0; i < players; i++)
         {
@@ -267,6 +273,9 @@ public class GameManager
             public void click()
             {
                 isPaused = false;
+                hud.clear();
+                gameInit(1);
+                game.menuScreen.init();
                 game.setScreen(game.menuScreen);
             }
         };

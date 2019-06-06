@@ -26,7 +26,7 @@ public class MenuScreen implements Screen {
     BitmapFont font;
     SpriteBatch batch;
     OrthographicCamera camera;
-    int playersNumber;
+    public int playersNumber;
     HUD hud;
     float buttonWidth = 120, buttonHeight = 40;
 

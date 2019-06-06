@@ -5,6 +5,14 @@ import com.badlogic.gdx.controllers.ControllerListener;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.GameLogic.GameManager;
+import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.SoundManager;
+import com.mygdx.game.go.BasicAction;
+import com.mygdx.game.go.GameObject;
+import com.mygdx.game.go.SelectedCard;
+
+import static com.mygdx.game.GameLogic.GameManager.game;
 
 public class ArcadeInputHandler implements ControllerListener, InputController {
 
@@ -39,15 +47,40 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
 
     @Override
     public boolean buttonDown(Controller controller, int buttonCode) {
-
-        if(Controllers.getControllers().indexOf(controller,true) == 0) {
-            if(buttonCode == 0)
-                inputSelect = true;
-
-            if(buttonCode == 6)
-                inputPause = true;
-
-            return true;
+        if (GameManager.players > 1) {
+            switch (buttonCode) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    ((SelectedCard) (GameManager.cardsOnBoard.get(buttonCode))).use();
+                    return true;
+            }
+        }
+        else
+        {
+            switch (buttonCode) {
+                case 0:
+                    SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
+                    game.menuScreen.playersNumber = 2;
+                    GameManager.hud.clear();
+                    GameManager.getInstance().gameInit(2);
+                    game.setScreen(((MyGdxGame) game).gameScreen);
+                case 1:
+                    SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
+                    game.menuScreen.playersNumber = 3;
+                    GameManager.hud.clear();
+                    GameManager.getInstance().gameInit(3);
+                    game.setScreen(((MyGdxGame) game).gameScreen);
+                case 2:
+                    SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
+                    game.menuScreen.playersNumber = 4;
+                    GameManager.hud.clear();
+                    GameManager.getInstance().gameInit(4);
+                    game.setScreen(((MyGdxGame) game).gameScreen);
+            }
         }
         return false;
     }
@@ -66,24 +99,29 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
     @Override
     public boolean axisMoved(Controller controller, int axisCode, float value) {
 
-        //Y axis
-        if(axisCode == 0){
-            if(value < -0.9f){
-                System.out.println("Up");
-                //Go down
-            }else if(value > 0.9f){
-                System.out.println("Down");
-                //Go up
+        if (GameManager.players > 1)
+        {
+            //Y axis
+            if(axisCode == 0){
+                if(value < -0.9f){
+                    ((BasicAction)(GameManager.basicActions.get(0))).use();
+                    return true;
+                    //Go down
+                }else if(value > 0.9f){
+                    ((BasicAction)(GameManager.basicActions.get(1))).use();
+                    return true;
+                    //Go up
+                }
             }
-        }
-        //X axis
-        if(axisCode == 1){
-            if(value < -0.9f){
-                System.out.println("Left");
-                //Go left
-            }else if(value > 0.9f){
-                System.out.println("Right");
-                //Go right
+            //X axis
+            if(axisCode == 1){
+                if(value < -0.9f){
+                    System.out.println("Left");
+                    //Go left
+                }else if(value > 0.9f){
+                    System.out.println("Right");
+                    //Go right
+                }
             }
         }
 
