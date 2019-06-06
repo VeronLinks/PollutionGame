@@ -36,7 +36,7 @@ public class SelfCard extends GameObject {
     public void init() {
         //c = new Color(cardR, cardG, cardB, 1f);
         imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
-        textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
+        textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.5f, dimension.x * 0.8f, dimension.y * 0.35f);
         GM = GameManager.getInstance();
         description = "\n+ "+volunteers+" volunteers\n" + "+ "+money+" money\n";
     }
@@ -57,12 +57,12 @@ public class SelfCard extends GameObject {
         batch.setColor(Color.WHITE);
 
         //image area
-        batch.draw(Assets.getInstance().black, imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
         //batch.draw(Assets.getInstance().getTexture(tex), imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
 
         //text area
-        batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        Assets.getInstance().mediumFont.setColor(Color.BLACK);
+        Assets.getInstance().mediumFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
 
     }
 
