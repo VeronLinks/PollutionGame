@@ -17,6 +17,7 @@ public class SelfCard extends GameObject {
     //Color c;
     private Rectangle imageBounds;
     private Rectangle textBounds;
+    String description;
 
      private GameManager GM;
     /**
@@ -37,6 +38,7 @@ public class SelfCard extends GameObject {
         imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
         textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
         GM = GameManager.getInstance();
+        description = "\n+ "+volunteers+" volunteers\n" + "+ "+money+" money\n";
     }
 
     public void use(GameStats stats) {
@@ -65,7 +67,7 @@ public class SelfCard extends GameObject {
 
         //text area
         batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        //Assets.getInstance().GameFont.draw(batch, text, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
 
     }
 

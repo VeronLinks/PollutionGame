@@ -22,8 +22,8 @@ public class SelectedCard extends GameObject {
     QuantityTarget pollution;
     QuantityTarget affinity;
     QuantityTarget bankrupty;
-    //private Rectangle imageBounds;
-    //private Rectangle textBounds;
+    private Rectangle imageBounds;
+    private Rectangle textBounds;
 
 
      private GameManager GM;
@@ -41,8 +41,8 @@ public class SelectedCard extends GameObject {
      * manually called, as the Json builder is calling the default constructor without parameters.
      */
     public void init() {
-        //imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
-        //textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
+        imageBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.45f, dimension.x * 0.8f, dimension.y * 0.50f);
+        textBounds = new Rectangle(position.x + dimension.x * 0.1f, position.y + dimension.y * 0.05f, dimension.x * 0.8f, dimension.y * 0.35f);
         GM = GameManager.getInstance();
     }
 
@@ -63,7 +63,7 @@ public class SelectedCard extends GameObject {
     public void render(SpriteBatch batch) {
         //color for the card background, the card assets is white and then tinted
         //batch.setColor(c);
-        batch.draw(Assets.getInstance().card, position.x, position.y, dimension.x, dimension.y);
+        batch.draw(Assets.getInstance().card_ONG, position.x, position.y, dimension.x, dimension.y);
         batch.setColor(Color.WHITE);
 
         //image area
@@ -72,7 +72,11 @@ public class SelectedCard extends GameObject {
 
         //text area
         //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        //Assets.getInstance().GameFont.draw(batch, text, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
+        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
+        //batch.setColor(Color.BLACK);
+        Assets.getInstance().GameFont.setColor(Color.BLACK);
+        Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2f, textBounds.width, Align.center, true);
+        Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
 
     }
 

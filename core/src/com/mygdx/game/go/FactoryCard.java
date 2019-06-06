@@ -61,7 +61,7 @@ public class FactoryCard extends GameObject {
     public void render(SpriteBatch batch) {
         //color for the card background, the card assets is white and then tinted
         //batch.setColor(c);
-        batch.draw(Assets.getInstance().card, position.x, position.y, dimension.x, dimension.y);
+        batch.draw(Assets.getInstance().card_factory, position.x, position.y, dimension.x, dimension.y);
         batch.setColor(Color.WHITE);
 
         //image area
