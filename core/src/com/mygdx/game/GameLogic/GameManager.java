@@ -185,6 +185,9 @@ public class GameManager
             c.init();
             cardsOnBoard.add(c);
         }
+        for(BasicAction b : factory.basicActions){
+            basicActions.add(b);
+        }
         TextButton b1 = new TextButton("CARD", -WC.hudCamera.viewportWidth/2 + margin,
                 -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override

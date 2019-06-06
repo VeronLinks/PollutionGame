@@ -20,6 +20,8 @@ public class Assets {
     public Texture card;
     public Texture card_ONG;
     public Texture card_factory;
+    public Texture basicAction1;
+    public Texture basicAction2;
     public Texture black;
     public Texture white;
     public Texture cloud;
@@ -37,6 +39,8 @@ public class Assets {
         card = new Texture(Gdx.files.internal("card.png"));
         card_ONG = new Texture(Gdx.files.internal("CARD_ONG.png"));
         card_factory = new Texture(Gdx.files.internal("CARD_Factory.png"));
+        basicAction1 = new Texture(Gdx.files.internal("BasicAction1.png"));
+        basicAction2 = new Texture(Gdx.files.internal("BasicAction2.png"));
         black = new Texture(Gdx.files.internal("black.png"));
         white = createRect(Color.WHITE);
         cloud = new Texture(Gdx.files.internal("cloud.png"));
