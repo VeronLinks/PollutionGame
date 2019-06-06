@@ -94,7 +94,10 @@ public class GameManager
     {
         for(eFactoryTurn = 0; eFactoryTurn < Constants.NUMBER_EVIL_FACTORIES; eFactoryTurn++)
         {
-            // AQUÍ METER LA LLAMADA A LA CARTA DE FACTORÍA Y SU USO
+            if (eFactoryList.get(eFactoryTurn).affinity < Constants.MAX_AFFINITY)
+            {
+                // AQUÍ METER LA LLAMADA A LA CARTA DE FACTORÍA Y SU USO
+            }
         }
         numberOfTurns = 0;
         startedLastTurn += 1;

@@ -6,6 +6,12 @@ import com.mygdx.game.Controllers.*;
 import com.mygdx.game.Screens.GameScreen;
 import com.mygdx.game.Screens.MenuScreen;
 
+/*
+	STILL TO DO:
+	- When pressing a card it should call its method use();
+	- When it's the turn of the enemies, Show the card each enemy is going to use and, then, use it (in GameManager, where indicated)
+ */
+
 public class MyGdxGame extends Game {
 
 	public WorldController controller;

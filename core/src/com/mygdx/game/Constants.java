@@ -8,6 +8,10 @@ public class Constants {
     public final static float VIEWPORT_HEIGHT = 900;
     public final static float VIEWPORT_RATIO = VIEWPORT_WIDTH/VIEWPORT_HEIGHT;
     public final static int NUMBER_EVIL_FACTORIES = 4;
+    public final static int MAX_ENEMY_CARDS = 7;
+    public final static int MAX_AFFINITY = 6;
+    public final static int MAX_BANKRUP = 6;
+    public final static int MAX_POLLUTION = 16;
 
     // Strings for Target
     public final static String SELF = "SELF";
