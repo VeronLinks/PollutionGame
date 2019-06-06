@@ -91,16 +91,20 @@ public class WorldRenderer {
         }
         batch.end();
 
-        //render HUD
-        batch.setProjectionMatrix(hudCamera.combined);
-        batch.begin();
-        hud.render(batch);
-        batch.end();
         if(GameManager.isPaused)
         {
+            //render Pause
             batch.setProjectionMatrix(pauseCamera.combined);
             batch.begin();
             pauseHUD.render(batch);
+            batch.end();
+        }
+        else
+        {
+            //render HUD
+            batch.setProjectionMatrix(hudCamera.combined);
+            batch.begin();
+            hud.render(batch);
             batch.end();
         }
 
