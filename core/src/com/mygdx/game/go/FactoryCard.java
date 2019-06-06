@@ -35,7 +35,7 @@ public class FactoryCard extends GameObject {
         super();
         dimension.x = 200;
         dimension.y = 300;
-        System.out.println("Card constructor called");
+        //System.out.println("Card constructor called");
     }
 
     /**
