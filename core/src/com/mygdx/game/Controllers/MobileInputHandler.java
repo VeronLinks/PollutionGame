@@ -14,7 +14,7 @@ public class MobileInputHandler implements InputController {
     private boolean inputSelect;
 
     private GameManager GM = GameManager.getInstance();
-    private Vector3 pointHUD, pointGame;
+    private Vector3 pointHUD, pointGame,pointPause;
 
     private WorldController controller;
 
@@ -100,7 +100,7 @@ public class MobileInputHandler implements InputController {
         GM.hud.click(pointHUD.x, pointHUD.y);
         switch (GameManager.state) {
             case GameManager.STATE_NONE:
-                if (!GM.hud.click(pointHUD.x, pointHUD.y)) {
+                if (!GM.hud.click(pointHUD.x, pointHUD.y) && !GameManager.isPaused) {
                     //the click is not for the HUD, check if it is for the cards!
                     pointGame = new Vector3(screenX, screenY, 0);
                     controller.camera.unproject(pointGame);
@@ -147,6 +147,13 @@ public class MobileInputHandler implements InputController {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+        pointPause = new Vector3(screenX, screenY, 0);
+        if(GameManager.isPaused) {
+            //check if the click is for the pause HUD
+            controller.pauseCamera.unproject(pointPause);
+            GameManager.pauseHUD.click(pointPause.x, pointPause.y);
+        }
         return false;
     }
 
