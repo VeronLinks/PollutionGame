@@ -6,16 +6,18 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.game.Controllers.WorldController;
 import com.mygdx.game.Controllers.WorldRenderer;
+import com.mygdx.game.GameLogic.GameManager;
+import com.mygdx.game.GameLogic.Player;
 import com.mygdx.game.MyGdxGame;
 
 public class GameScreen implements Screen {
 
     WorldController controller;
     WorldRenderer renderer;
-    Game game;
+    MyGdxGame game;
 
     public GameScreen(Game game) {
-        this.game = game;
+        this.game = (MyGdxGame)game;
     }
 
 
@@ -23,6 +25,11 @@ public class GameScreen implements Screen {
     public void show() {
         controller = ((MyGdxGame)game).controller;
         renderer = ((MyGdxGame)game).renderer;
+        GameManager.getInstance().playerList.clear();
+        for (int i = 0; i < GameManager.players; i++)
+        {
+            GameManager.getInstance().playerList.add(new Player());
+        }
     }
 
     @Override

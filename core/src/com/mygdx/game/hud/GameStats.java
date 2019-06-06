@@ -1,37 +1,34 @@
 package com.mygdx.game.hud;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.GameLogic.Player;
 import com.mygdx.game.hud.HUDElement;
 import com.mygdx.game.hud.Label;
 
 public class GameStats extends HUDElement {
 
-    private float pollution;
-    private float money;
+    private Player currentPlayer;
     private Label pollutionLabel;
     private Label moneyLabel;
+    private Label volunteers;
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 
     public GameStats(float x, float y) {
 
         pollutionLabel = new Label("", x, y);
-        moneyLabel = new Label("", x + 200, y);
-        addPollution(pollution);
-        addMoney(money);
+        moneyLabel = new Label("", x + 300, y);
+        volunteers = new Label("", x + 300, y);
     }
 
-    public void addPollution(float pollution) {
-        this.pollution += pollution;
-        pollutionLabel.text = "Poll: " + this.pollution;
-    }
 
-    public void addMoney(float money) {
-        this.money += money;
-        moneyLabel.text = "Cash: " + this.money + "$";
-    }
 
     @Override
     public void render(SpriteBatch batch) {
-        pollutionLabel.render(batch);
-        moneyLabel.render(batch);
+        pollutionLabel.text = "Pollution level: " + currentPlayer.pollution;
+        moneyLabel.text = "Money: " + currentPlayer.money + "$";
+        moneyLabel.text = "Volunteers: " + currentPlayer.volunteers;
     }
 }

@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.controllers.Controllers;
 import com.mygdx.game.Controllers.*;
-import com.mygdx.game.Screens.EndScreen;
 import com.mygdx.game.Screens.GameScreen;
 import com.mygdx.game.Screens.MenuScreen;
 

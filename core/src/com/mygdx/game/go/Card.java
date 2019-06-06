@@ -16,8 +16,9 @@ public class Card extends GameObject {
     float cardR;
     float cardG;
     float cardB;
-    float money;
-    float pollution;
+    int money;
+    int pollution;
+    int volunteers;
     String tex;
     Color c;
     private Rectangle imageBounds;
@@ -45,16 +46,11 @@ public class Card extends GameObject {
     }
 
     public void use(GameStats stats) {
-        stats.addMoney(money);
-        stats.addPollution(pollution);
-
-        //GM.playerList.get(GM.turn).volunteers = volunteers;
-        //GM.playerList.get(GM.turn).money = money;
-        //GM.playerList.get(GM.turn).pollution = pollution;
-
-        GameManager.getInstance().nextTurn();
+        GameManager.playerList.get(GameManager.turn).useCard(pollution, money, volunteers);
 
         SoundManager.getInstance().click.play();
+
+        GameManager.getInstance().nextTurn();
     }
 
     @Override

@@ -16,16 +16,18 @@ public class GameManager
 {
     private static GameManager instance;
 
-    public ArrayList<Player> playerList;
-    public ArrayList<EvilFactory> eFactoryList;
-    public ArrayList<GameObject> cardsOnBoard;
-    public int turn;
+    public static ArrayList<Player> playerList;
+    public static ArrayList<EvilFactory> eFactoryList;
+    public static ArrayList<GameObject> cardsOnBoard;
+    public static int turn;
     public static int players = 1;
-    public HUD hud;
-    public GameStats gameStats;
+    public static HUD hud;
+    public static GameStats gameStats;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
+
+    private Player currentPlayer;
 
     private GameManager()
     {
@@ -77,7 +79,8 @@ public class GameManager
 
     private void PlayerTurn()
     {
-
+        currentPlayer = playerList.get(turn);
+        gameStats.setCurrentPlayer(currentPlayer);
     }
 
     private void EvilTurn()
