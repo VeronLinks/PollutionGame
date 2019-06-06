@@ -19,6 +19,7 @@ public class GameManager
 {
     private static GameManager instance;
 
+    public static int numberOfFactoryCards = 4;
     public static ArrayList<Player> playerList;
     public static ArrayList<EvilFactory> eFactoryList;
     public static ArrayList<GameObject> cardsOnBoard;
@@ -44,6 +45,8 @@ public class GameManager
     public static final int STATE_NONE = 0;
     public static final int STATE_PLAYER_ACTIONS = 1;
     public static final int STATE_GAME_ACTIONS = 2;
+
+    private int usedFactoryCards = 0;
 
     public static void setGame(MyGdxGame game) {
         GameManager.game = game;
@@ -163,15 +166,41 @@ public class GameManager
 
     private void EvilTurn()
     {
+        int pollutedPeople = 0;
+        for (Player p : playerList)
+        {
+            if (p.pollution > Constants.LIMIT_POLLUTION)
+            {
+                pollutedPeople++;
+            }
+        }
+
         currentSpecialCard.clear();
+        usedFactoryCards = 0;
         state = STATE_GAME_ACTIONS;
         for(eFactoryTurn = 0; eFactoryTurn < Constants.NUMBER_EVIL_FACTORIES; eFactoryTurn++)
         {
             if (eFactoryList.get(eFactoryTurn).affinity < Constants.MAX_AFFINITY)
             {
                 currentSpecialCard.add(factory.gimmeRandomFactoryCard(eFactoryTurn));
+                usedFactoryCards++;
+                pollutedPeople++;
             }
         }
+        numberOfFactoryCards = pollutedPeople;
+        numberOfFactoryCards = numberOfFactoryCards > Constants.MAX_ENEMY_CARDS ?
+                Constants.MAX_ENEMY_CARDS : numberOfFactoryCards;
+        // Extra cards for pollution
+        for(eFactoryTurn = 0; eFactoryTurn < Constants.NUMBER_EVIL_FACTORIES &&
+                usedFactoryCards <= numberOfFactoryCards; eFactoryTurn++)
+        {
+            if (eFactoryList.get(eFactoryTurn).affinity < Constants.MAX_AFFINITY)
+            {
+                currentSpecialCard.add(factory.gimmeRandomFactoryCard(eFactoryTurn));
+                usedFactoryCards++;
+            }
+        }
+
         // Check somewhere these conditions. If state, thow the cards in currentSpecialCard.
         // When clicking a card, use and deactivate.
         // If state & every card is deactivated, then newturn
