@@ -12,7 +12,7 @@ public class DesktopInputHandler implements InputController {
     private boolean inputPause;
     private boolean inputSelect;
 
-    private Vector3 pointHUD, pointGame;
+    private Vector3 pointHUD, pointGame,pointPause;
 
     private WorldController controller;
     private GameManager GM =GameManager.getInstance();
@@ -62,13 +62,15 @@ public class DesktopInputHandler implements InputController {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         //screen touched, corresponds to a HUD button?
         pointHUD = new Vector3(screenX, screenY, 0);
-
+        pointPause = new Vector3(screenX, screenY, 0);
+        //check if the click is for the pause HUD
+        controller.pauseCamera.unproject(pointPause);
         //check if the click is for the HUD
         controller.hudCamera.unproject(pointHUD);
 
         switch (GameManager.state) {
             case GameManager.STATE_NONE:
-                if (!GM.hud.click(pointHUD.x, pointHUD.y)) {
+                if (!GameManager.pauseHUD.click(pointPause.x, pointPause.y) && !GM.hud.click(pointHUD.x, pointHUD.y)) {
                     //the click is not for the HUD, check if it is for the cards!
                     pointGame = new Vector3(screenX, screenY, 0);
                     controller.camera.unproject(pointGame);

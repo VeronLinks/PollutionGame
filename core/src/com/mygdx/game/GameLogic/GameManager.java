@@ -73,7 +73,7 @@ public class GameManager
 
         hud = new HUD();
 
-        createHUD();
+        createPauseHUD();
     }
 
     public void gameInit(int numOfPlayers)
@@ -257,7 +257,7 @@ public class GameManager
         hud.add(gameStats);
     }
 
-    public void createHUD()
+    public void createPauseHUD()
     {
         pauseHUD = new HUD();
         TextButton b1 = new TextButton("Main Menu", 10, 10, 120, 40) {
