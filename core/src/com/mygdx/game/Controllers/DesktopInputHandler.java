@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Card;
 import com.mygdx.game.go.GameObject;
+import com.mygdx.game.go.SelectedCard;
 
 public class DesktopInputHandler implements InputController {
 
@@ -69,10 +70,9 @@ public class DesktopInputHandler implements InputController {
 
             for (GameObject card : GM.cardsOnBoard) {
 
-                if (card instanceof Card && card.getBounds().contains(pointGame.x, pointGame.y)) {
+                if (card instanceof SelectedCard && card.getBounds().contains(pointGame.x, pointGame.y)) {
                     //card clicked, "use" it and remove it afterwards
-                    controller.toRemove = (Card) card;
-                    controller.toRemove.use(GM.gameStats);
+                    ((SelectedCard) card).use();
                 }
             }
         }
