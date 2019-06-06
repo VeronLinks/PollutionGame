@@ -50,6 +50,7 @@ public class MyGdxGame extends Game {
 		}else{
 
 			input = new MobileInputHandler(controller);
+			Gdx.input.setCatchBackKey(true);
 		}
 
 		Gdx.app.debug("CREATE", "GDXGAME");
