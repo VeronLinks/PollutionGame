@@ -17,6 +17,8 @@ public class Assets {
     public BitmapFont mediumFont;
     public BitmapFont littleFont;
     public Texture card;
+    public Texture card_ONG;
+    public Texture card_factory;
     public Texture black;
     public Texture cloud;
     public Texture backgroundGame;
@@ -31,6 +33,8 @@ public class Assets {
         box = new Texture(Gdx.files.internal("box.png"));
         coin = new Texture(Gdx.files.internal("coin.png"));
         card = new Texture(Gdx.files.internal("card.png"));
+        card_ONG = new Texture(Gdx.files.internal("CARD_ONG.png"));
+        card_factory = new Texture(Gdx.files.internal("CARD_Factory.png"));
         black = new Texture(Gdx.files.internal("black.png"));
         cloud = new Texture(Gdx.files.internal("cloud.png"));
         backgroundGame = new Texture(Gdx.files.internal("Tablero.jpg"));

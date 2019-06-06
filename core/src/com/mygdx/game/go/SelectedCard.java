@@ -63,7 +63,7 @@ public class SelectedCard extends GameObject {
     public void render(SpriteBatch batch) {
         //color for the card background, the card assets is white and then tinted
         //batch.setColor(c);
-        batch.draw(Assets.getInstance().card, position.x, position.y, dimension.x, dimension.y);
+        batch.draw(Assets.getInstance().card_ONG, position.x, position.y, dimension.x, dimension.y);
         batch.setColor(Color.WHITE);
 
         //image area
@@ -71,8 +71,10 @@ public class SelectedCard extends GameObject {
         //batch.draw(Assets.getInstance().getTexture(tex), imageBounds.x, imageBounds.y, imageBounds.width, imageBounds.height);
 
         //text area
-        batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
-        batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
+        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y, textBounds.width, textBounds.height);
+        //batch.draw(Assets.getInstance().black, textBounds.x, textBounds.y+textBounds.height*1.8f, textBounds.width, textBounds.height/4);
+        //batch.setColor(Color.BLACK);
+        Assets.getInstance().GameFont.setColor(Color.BLACK);
         Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2f, textBounds.width, Align.center, true);
         Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 0.95f, textBounds.width, Align.center, true);
 
