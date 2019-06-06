@@ -8,7 +8,8 @@ public class SoundManager
     private static SoundManager instance;
 
     public static float sfxVolume, musicVolume;
-    public static Sound click, badCard1, badCard2, goodCard1, goodCard2, mainTheme1, mainTheme2, mainMenu, menuClick;
+    public static Sound click, badCard1, badCard2, goodCard1, goodCard2, mainTheme1, mainTheme2, mainMenu, menuClick,
+            error;
 
     private SoundManager()
     {
@@ -22,6 +23,7 @@ public class SoundManager
         mainTheme2 = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainTheme_2.wav"));
         mainMenu = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainMenu_1.wav"));
         menuClick = Gdx.audio.newSound(Gdx.files.internal("Sounds/YouGotThatClick.wav"));
+        error = Gdx.audio.newSound(Gdx.files.internal("Sounds/ErrorSFX.wav"));
     }
 
     public static SoundManager getInstance()

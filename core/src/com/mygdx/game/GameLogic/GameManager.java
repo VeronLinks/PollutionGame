@@ -44,6 +44,7 @@ public class GameManager
     {
         turn = 0;
         numberOfTurns = 0;
+        startedLastTurn = 0;
 
         eFactoryList = new ArrayList<EvilFactory>();
         playerList = new ArrayList<Player>();
@@ -129,12 +130,12 @@ public class GameManager
 
     public void PlayerTurn()
     {
+        currentPlayer = playerList.get(turn);
+        turn++;
         if (turn == players)
         {
             turn = 0;
         }
-        currentPlayer = playerList.get(turn);
-        turn++;
         numberOfTurns++;
     }
 

@@ -51,15 +51,21 @@ public class SelectedCard extends GameObject {
 
     public void use() {
 
-        SoundManager.getInstance().click.play();
+        if (GameManager.playerList.get(GameManager.turn).canAfford(cost)) {
+            SoundManager.getInstance().click.play();
 
-        targetedUse(money);
-        targetedUse(volunteers);
-        targetedUse(pollution);
-        targetedUse(affinity);
-        targetedUse(bankrupty);
+            targetedUse(money);
+            targetedUse(volunteers);
+            targetedUse(pollution);
+            targetedUse(affinity);
+            targetedUse(bankrupty);
 
-        GameManager.getInstance().nextTurn();
+            GameManager.getInstance().nextTurn();
+        }
+        else
+        {
+            SoundManager.getInstance().error.play();
+        }
     }
 
     private void targetedUse(QuantityTarget qT)

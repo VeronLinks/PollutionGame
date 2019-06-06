@@ -29,7 +29,7 @@ public class GameStats extends HUDElement {
             pollutionLabel.text = "Pollution level: " + GameManager.getInstance().currentPlayer.pollution;
             moneyLabel.text = "Money: " + GameManager.getInstance().currentPlayer.money + "$";
             volunteers.text = "Volunteers: " + GameManager.getInstance().currentPlayer.volunteers;
-            turnInfo.text = "TURN: " + GameManager.numberOfTurns + ", Current Player: " + GameManager.turn + " of a total of " + GameManager.players;
+            turnInfo.text = "TURN: " + GameManager.numberOfTurns + ", Current Player: " + (GameManager.turn + 1) + " of a total of " + GameManager.players;
         }
         else
         {
