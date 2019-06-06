@@ -44,9 +44,13 @@ public class HUD {
             he.render(batch);
         }
         for (HUDElement he : labels) {
-            he.render(batch);
+            if (GameManager.players > 1) {
+                he.render(batch);
+            }
         }
-        renderPlayerData(batch);
+        if (GameManager.players > 1) {
+            renderPlayerData(batch);
+        }
     }
 
     public boolean click(float x, float y) {
