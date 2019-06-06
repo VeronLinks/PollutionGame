@@ -5,9 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.game.Constants;
 import com.mygdx.game.Controllers.WorldController;
-import com.mygdx.game.go.Card;
-import com.mygdx.game.go.CardFactory;
-import com.mygdx.game.go.GameObject;
+import com.mygdx.game.go.*;
 import com.mygdx.game.hud.GameStats;
 import com.mygdx.game.hud.HUD;
 import com.mygdx.game.hud.TextButton;
@@ -85,8 +83,10 @@ public class GameManager
     private void createMasterDeck()
     {
         Json json = new Json();
-        factory = json.fromJson(CardFactory.class, Gdx.files.internal("example.json"));
-        System.out.println(factory.cards.size() + " cards in the master deck");
+        factory = json.fromJson(CardFactory.class, Gdx.files.internal("card_base.json"));
+        System.out.println(factory.self_cards.size() + " cards in the self_cards deck");
+        System.out.println(factory.selected_cards.size() + " cards in the selected_cards deck");
+        System.out.println(factory.factory_cards.size() + " cards in the factory_cards deck");
     }
 
     private void fillHUD()
@@ -96,7 +96,7 @@ public class GameManager
                 -WC.hudCamera.viewportHeight/2 + margin/2, 240, 80) {
             @Override
             public void click() {
-                Card c = factory.gimmeRandomCard();
+                FactoryCard c = factory.gimmeRandomFactoryCard();
                 c.position.x = MathUtils.random(-WC.camera.viewportWidth / 3, WC.camera.viewportWidth / 3);
                 c.position.y = MathUtils.random(-WC.camera.viewportHeight / 3, WC.camera.viewportHeight / 3);
                 c.init();

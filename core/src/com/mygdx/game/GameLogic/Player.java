@@ -16,7 +16,7 @@ public class Player extends GameObject
 
     @Override
     public void render(SpriteBatch batch) {
-        
+
     }
 
     @Override
