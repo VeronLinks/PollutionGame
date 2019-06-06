@@ -28,8 +28,8 @@ public class GameManager
     public static GameStats gameStats;
     public static Player currentPlayer;
     public static int startedLastTurn;
+    public static int numberOfTurns;
 
-    private static int numberOfTurns;
     private static MyGdxGame game;
 
     CardFactory factory;
@@ -128,6 +128,7 @@ public class GameManager
         }
         currentPlayer = playerList.get(turn);
         turn++;
+        numberOfTurns++;
     }
 
     private void EvilTurn()

@@ -64,6 +64,7 @@ public class SelectedCard extends GameObject {
 
     private void targetedUse(QuantityTarget qT)
     {
+        System.out.println(qT.target);
         if (qT.target == Constants.SELF)
         {
             GameManager.playerList.get(GameManager.turn).useCard
