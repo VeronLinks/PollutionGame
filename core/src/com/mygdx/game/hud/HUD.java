@@ -2,6 +2,7 @@ package com.mygdx.game.hud;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.Assets;
 import com.mygdx.game.Controllers.WorldController;
 
 import java.util.ArrayList;

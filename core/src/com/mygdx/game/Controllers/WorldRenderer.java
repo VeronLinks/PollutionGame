@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Assets;
 import com.mygdx.game.Constants;
 import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Background;
@@ -56,6 +57,11 @@ public class WorldRenderer {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         bg.render(batch);
+        int x = (int)-WorldController.camera.viewportWidth/5;
+        int y = (int)-WorldController.camera.viewportHeight/2;
+        int w = (int) (WorldController.camera.viewportWidth/1.75f);
+        int h = (int) (WorldController.camera.viewportHeight/1.35f);
+        batch.draw(Assets.getInstance().white, x, y, w, h);
         for (GameObject go : gameObjects) {
             go.render(batch);
         }

@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -20,6 +21,7 @@ public class Assets {
     public Texture card_ONG;
     public Texture card_factory;
     public Texture black;
+    public Texture white;
     public Texture cloud;
     public Texture backgroundGame;
 
@@ -36,6 +38,7 @@ public class Assets {
         card_ONG = new Texture(Gdx.files.internal("CARD_ONG.png"));
         card_factory = new Texture(Gdx.files.internal("CARD_Factory.png"));
         black = new Texture(Gdx.files.internal("black.png"));
+        white = createRect(Color.WHITE);
         cloud = new Texture(Gdx.files.internal("cloud.png"));
         backgroundGame = new Texture(Gdx.files.internal("Tablero.jpg"));
         button = createButtonTexture();
@@ -89,5 +92,19 @@ public class Assets {
 
         return instance;
 
+    }
+
+
+    private Texture createRect(Color color){
+
+        int width = 100;
+
+        Pixmap pm = new Pixmap(width, width, Pixmap.Format.RGBA8888);
+        pm.setColor(color);
+
+        pm.fillRectangle(0, 0, width, width);
+
+        Texture t = new Texture(pm);
+        return t;
     }
 }
