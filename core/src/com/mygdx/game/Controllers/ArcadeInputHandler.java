@@ -98,6 +98,13 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                     GameManager.hud.clear();
                     GameManager.getInstance().gameInit(4);
                     game.setScreen(((MyGdxGame) game).gameScreen);
+                case 3:
+                case 4:
+                case 5:
+                    game.menuScreen.init();
+                    GameManager.hud.clear();
+                    game.setScreen(((MyGdxGame) game).menuScreen);
+                    break;
             }
         }
         return false;

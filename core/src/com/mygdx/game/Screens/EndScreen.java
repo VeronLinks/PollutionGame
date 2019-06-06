@@ -33,6 +33,7 @@ public class EndScreen implements Screen {
         this.winner = winner;
         (hud = GameManager.getInstance().hud).clear();
         font = Assets.getInstance().bigFont;
+        GameManager.getInstance().gameInit(1);
         this.game.menuScreen.init();
         batch = ((MyGdxGame) game).menuScreen.batch;
         camera = WorldController.hudCamera;
