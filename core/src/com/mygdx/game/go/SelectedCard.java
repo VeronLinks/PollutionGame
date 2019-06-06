@@ -114,6 +114,9 @@ public class SelectedCard extends GameObject {
         Assets.getInstance().GameFont.setColor(Color.BLACK);
         Assets.getInstance().GameFont.draw(batch, name, textBounds.x, textBounds.y + textBounds.height * 2.13f, textBounds.width, Align.center, true);
         Assets.getInstance().GameFont.draw(batch, description, textBounds.x, textBounds.y + textBounds.height * 1.65f, textBounds.width, Align.center, true);
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
+        Assets.getInstance().mediumFont.draw(batch, ""+cost.volunteers, textBounds.x - textBounds.width/2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
+        Assets.getInstance().mediumFont.draw(batch, ""+cost.money, textBounds.x + textBounds.width/2.4f, textBounds.y + textBounds.height * 2.5f, textBounds.width, Align.center, true);
 
     }
 

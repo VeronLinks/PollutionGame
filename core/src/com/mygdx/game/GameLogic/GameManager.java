@@ -21,6 +21,7 @@ public class GameManager
     public static ArrayList<Player> playerList;
     public static ArrayList<EvilFactory> eFactoryList;
     public static ArrayList<GameObject> cardsOnBoard;
+    public static ArrayList<GameObject> basicActions;
     public static int turn;
     public static int eFactoryTurn;
     public static int players = 1;
@@ -47,10 +48,16 @@ public class GameManager
         eFactoryList = new ArrayList<EvilFactory>();
         playerList = new ArrayList<Player>();
         cardsOnBoard = new ArrayList<GameObject>();
+        basicActions = new ArrayList<GameObject>();
 
         for(int i = 0;i < Constants.NUMBER_EVIL_FACTORIES;i++)
         {
             eFactoryList.add(new EvilFactory());
+        }
+
+        int actions = 4;
+        for(int i=0; i<actions; i++){
+
         }
 
         hud = new HUD();

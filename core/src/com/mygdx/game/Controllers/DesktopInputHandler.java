@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.GameLogic.GameManager;
+import com.mygdx.game.go.BasicAction;
 import com.mygdx.game.go.Card;
 import com.mygdx.game.go.GameObject;
 import com.mygdx.game.go.SelectedCard;
@@ -73,6 +74,11 @@ public class DesktopInputHandler implements InputController {
                 if (card instanceof SelectedCard && card.getBounds().contains(pointGame.x, pointGame.y)) {
                     //card clicked, "use" it and remove it afterwards
                     ((SelectedCard) card).use();
+                }
+
+                if (card instanceof BasicAction && card.getBounds().contains(pointGame.x, pointGame.y)) {
+                    //card clicked, "use" it and remove it afterwards
+                    ((BasicAction) card).use();
                 }
             }
         }

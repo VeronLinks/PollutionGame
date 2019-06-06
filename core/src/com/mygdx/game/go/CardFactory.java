@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class CardFactory {
 
     public ArrayList<Card> cards;
+    public ArrayList <BasicAction> basicActions;
 
     public Card gimmeRandomCard() {
 

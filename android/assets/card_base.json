@@ -721,4 +721,40 @@
               }
             }
           ]
+	
+  "basicActions":
+		  [
+			{
+              "id": 0,
+              "cost": {
+                "money": 1,
+                "volunteers": 0
+              },
+              "money": {
+                "quantity": -1,
+                "target": "SELF"
+              },
+              "volunteers": {
+                "quantity": 1,
+                "target": "SELF"
+              }
+			},
+			
+			{
+              "id": 1,
+              "cost": {
+                "money": 0,
+                "volunteers": 1
+              },
+              "money": {
+                "quantity": 2,
+                "target": "SELF"
+              },
+              "volunteers": {
+                "quantity": -1,
+                "target": "SELF"
+              }
+			}
+		  ]
+
 }
