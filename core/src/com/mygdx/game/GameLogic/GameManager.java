@@ -79,7 +79,6 @@ public class GameManager
     public void PlayerTurn()
     {
         currentPlayer = playerList.get(turn);
-        gameStats.setCurrentPlayer(currentPlayer);
     }
 
     private void EvilTurn()
@@ -115,7 +114,7 @@ public class GameManager
             }
         };
         hud.add(b1);
-        gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240 + margin * 3, -WC.hudCamera.viewportHeight/2 + 40 + margin/2);
+        gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240, -WC.hudCamera.viewportHeight/2 + 40);
         hud.add(gameStats);
     }
 }
