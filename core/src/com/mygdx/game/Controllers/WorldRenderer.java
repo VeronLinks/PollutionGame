@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Constants;
 import com.mygdx.game.GameLogic.GameManager;
+import com.mygdx.game.GameLogic.Player;
 import com.mygdx.game.go.Background;
 import com.mygdx.game.go.BasicAction;
 import com.mygdx.game.go.GameObject;
@@ -26,7 +27,7 @@ public class WorldRenderer {
     private HUD hud;
     private GameManager GM =GameManager.getInstance();
 
-
+    private Color[] colors = new Color[4];
 
     public WorldRenderer(WorldController wc){
         this.controller = wc;
@@ -35,6 +36,11 @@ public class WorldRenderer {
         hudCamera = controller.hudCamera;
 
         hud = GM.hud;
+
+        colors[0] = new Color(1, 1, 1, 1);
+        colors[1] = new Color(1, 0, 0, 1);
+        colors[2] = new Color(0, 1, 0, 1);
+        colors[3] = new Color(0, 0, 1, 1);
 
         init();
     }
@@ -52,7 +58,6 @@ public class WorldRenderer {
 
         ArrayList<GameObject> gameObjects = GM.cardsOnBoard;
         for(GameObject b : GM.basicActions){
-
             gameObjects.add(b);
         }
 
@@ -67,6 +72,8 @@ public class WorldRenderer {
             go.render(batch);
         }
         batch.setColor(Color.WHITE);
+        renderPollutionBar(batch);
+        renderPlayers(batch);
         batch.end();
 
         //render HUD
@@ -98,5 +105,38 @@ public class WorldRenderer {
     public void dispose(){
 
         batch.dispose();
+    }
+
+
+    private void renderPollutionBar(SpriteBatch batch){
+        int totalBars = 16;
+        int greenBars = 12;
+        int x = (int)(WorldController.camera.viewportWidth/2.55f);
+        int y = (int) (-WorldController.camera.viewportHeight/2.3f);
+        int w = (int) WorldController.camera.viewportHeight/10;
+        int h = (int) WorldController.camera.viewportHeight/35;
+        int offset = (int) WorldController.camera.viewportHeight/100;
+        batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
+        for(int i=0;i<totalBars;i++){
+            if(i<12){
+                batch.draw(Assets.getInstance().green, x, y+h*i+offset*i, w, h);
+            }else{
+                batch.draw(Assets.getInstance().red, x, y+h*i+offset*i, w, h);
+            }
+        }
+    }
+
+    private void renderPlayers(SpriteBatch batch){
+
+        int x = (int)(WorldController.camera.viewportWidth/2.55f);
+        int y = (int) (-WorldController.camera.viewportHeight/2.3f);
+        int w = (int) WorldController.camera.viewportHeight/50;
+        int offsetX = w+(int) WorldController.camera.viewportHeight/150;
+        int offsetY = (int) WorldController.camera.viewportHeight/35+(int) WorldController.camera.viewportHeight/100;
+        for(int i=0;i<GM.players; i++){
+            batch.setColor(colors[i]);
+            batch.draw(Assets.getInstance().box, x+offsetX*i, y+offsetY*GM.playerList.get(i).pollution, w, w);
+        }
+        batch.setColor(Color.WHITE);
     }
 }

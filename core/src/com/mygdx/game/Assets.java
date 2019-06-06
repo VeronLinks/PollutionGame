@@ -24,6 +24,8 @@ public class Assets {
     public Texture basicAction2;
     public Texture black;
     public Texture white;
+    public Texture green;
+    public Texture red;
     public Texture cloud;
     public Texture backgroundGame;
 
@@ -43,6 +45,8 @@ public class Assets {
         basicAction2 = new Texture(Gdx.files.internal("BasicAction2.png"));
         black = new Texture(Gdx.files.internal("black.png"));
         white = createRect(Color.WHITE);
+        green = createRect(new Color(0x01/255f, 0xb0/255f, 0x50/255f, 1));
+        red = createRect(new Color(0xc0/255f, 0x50/255f, 0x4d/255f, 1));
         cloud = new Texture(Gdx.files.internal("cloud.png"));
         backgroundGame = new Texture(Gdx.files.internal("Tablero.jpg"));
         button = createButtonTexture();
