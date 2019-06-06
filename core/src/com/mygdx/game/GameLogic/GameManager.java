@@ -20,7 +20,7 @@ public class GameManager
     public ArrayList<EvilFactory> eFactoryList;
     public ArrayList<GameObject> cardsOnBoard;
     public int turn;
-    public static int players = 0;
+    public static int players = 1;
     public HUD hud;
     public GameStats gameStats;
 
@@ -65,19 +65,28 @@ public class GameManager
 
     public void nextTurn()
     {
-        if(turn== players -1)
+        if(turn == players)
         {
             EvilTurn();
         }
-            turn+=1% players;
+        else {
+            PlayerTurn();
+            turn += 1;
+        }
     }
 
-    public void EvilTurn()
+    private void PlayerTurn()
     {
-        for(int i=0;i<Constants.NUMBER_EVIL_FACTORIES;i++)
+
+    }
+
+    private void EvilTurn()
+    {
+        for(int i=0; i < Constants.NUMBER_EVIL_FACTORIES; i++)
         {
             //aqui se mete el uso de la carta que usa la factory.
         }
+        turn = 0;
     }
 
     private void createMasterDeck()

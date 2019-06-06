@@ -42,7 +42,7 @@ public class MenuScreen implements Screen {
 
     public void init()
     {
-        GameManager.players = playersNumber = 0;
+        GameManager.players = playersNumber = 1;
     }
 
     @Override
