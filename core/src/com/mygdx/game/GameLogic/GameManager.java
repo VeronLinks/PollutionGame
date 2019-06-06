@@ -33,6 +33,7 @@ public class GameManager
     public static ArrayList<GameObject> currentSpecialCard;
     public static MyGdxGame game;
     public static boolean isPaused;
+    public static int selfCardTurn = 0;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
@@ -180,6 +181,7 @@ public class GameManager
         fillBoard();
         currentSpecialCard.clear();
         state = STATE_PLAYER_ACTIONS;
+        selfCardTurn = 0;
         for(int turn = 0; turn < players; turn++)
         {
             if (playerList.get(turn).pollution < Constants.MAX_POLLUTION)

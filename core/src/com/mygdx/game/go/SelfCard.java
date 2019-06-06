@@ -44,7 +44,8 @@ public class SelfCard extends GameObject {
     public void use() {
         SoundManager.getInstance().click.play();
 
-        GameManager.playerList.get(GameManager.turn).useCard(0, money, volunteers);
+        GameManager.playerList.get(GameManager.selfCardTurn).useCard(0, money, volunteers);
+        GameManager.selfCardTurn++;
 
         active = false;
     }
