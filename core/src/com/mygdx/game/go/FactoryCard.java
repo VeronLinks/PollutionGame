@@ -86,13 +86,13 @@ public class FactoryCard extends GameObject {
         else if (qT.target.equals(Constants.FACTORY))
         {
             GameManager.eFactoryList.get(factoryNumber).useCard
-                    (affinity.quantity, pollution.quantity);
+                    (affinity.quantity, bankrupty.quantity);
         }
         else if (qT.target.equals(Constants.FACTORIES))
         {
             for (EvilFactory f : GameManager.eFactoryList)
             {
-                f.useCard(affinity.quantity, pollution.quantity);
+                f.useCard(affinity.quantity, bankrupty.quantity);
             }
         }
     }

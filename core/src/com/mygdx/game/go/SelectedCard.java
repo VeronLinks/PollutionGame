@@ -94,13 +94,13 @@ public class SelectedCard extends GameObject {
         else if (qT.target.equals(Constants.FACTORY))
         {
             GameManager.eFactoryList.get(MathUtils.random(0, Constants.NUMBER_EVIL_FACTORIES - 1)).useCard
-                    (affinity.quantity, pollution.quantity);
+                    (affinity.quantity, bankrupty.quantity);
         }
         else if (qT.target.equals(Constants.FACTORIES))
         {
             for (EvilFactory f : GameManager.eFactoryList)
             {
-                f.useCard(affinity.quantity, pollution.quantity);
+                f.useCard(affinity.quantity, bankrupty.quantity);
             }
         }
     }

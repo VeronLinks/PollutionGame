@@ -45,7 +45,7 @@ public class HUD {
         }
         if (GameManager.players > 1) {
             for (HUDElement he : labels) {
-                he.render(batch);
+                //he.render(batch);
             }
             renderPlayerData(batch);
         }

@@ -169,9 +169,10 @@ public class WorldRenderer {
             batch.setColor(Color.GRAY);
             batch.draw(Assets.getInstance().white, x, y+h*i+offset*i, w, h);
             Assets.getInstance().mediumFont.draw(batch, "" + (i+1), x+w/1.3f, y+h*(i+1)+offset*i, w, Align.center, true);
-
         }
+        int marker = GameManager.numberOfFactoryCards-1;
         batch.setColor(Color.WHITE);
+        batch.draw(Assets.getInstance().exclamation, x, y+h*marker+offset*marker, w, h);
         Assets.getInstance().mediumFont.setColor(Color.WHITE);
     }
 

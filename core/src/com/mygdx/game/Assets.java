@@ -29,6 +29,7 @@ public class Assets {
     public Texture cloud;
     public Texture backgroundGame;
     public Texture factoryIcon;
+    public Texture exclamation;
 
     public BitmapFont GameFont;
 
@@ -45,6 +46,7 @@ public class Assets {
         basicAction1 = new Texture(Gdx.files.internal("BasicAction1.png"));
         basicAction2 = new Texture(Gdx.files.internal("BasicAction2.png"));
         factoryIcon = new Texture(Gdx.files.internal("ICON_Factory.png"));
+        exclamation = new Texture(Gdx.files.internal("exclamation.png"));
         black = new Texture(Gdx.files.internal("black.png"));
         white = createRect(Color.WHITE);
         green = createRect(new Color(0x01/255f, 0xb0/255f, 0x50/255f, 1));
