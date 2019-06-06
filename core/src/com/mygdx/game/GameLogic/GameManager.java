@@ -23,11 +23,10 @@ public class GameManager
     public static int players = 1;
     public static HUD hud;
     public static GameStats gameStats;
+    public Player currentPlayer;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
-
-    private Player currentPlayer;
 
     private GameManager()
     {
@@ -77,7 +76,7 @@ public class GameManager
         }
     }
 
-    private void PlayerTurn()
+    public void PlayerTurn()
     {
         currentPlayer = playerList.get(turn);
         gameStats.setCurrentPlayer(currentPlayer);

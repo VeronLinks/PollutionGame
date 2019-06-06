@@ -42,16 +42,11 @@ public class SelfCard extends GameObject {
     }
 
     public void use(GameStats stats) {
-        stats.addMoney(money);
-        //stats.addVolunteers(volunteers);
-
-        //GM.playerList.get(GM.turn).volunteers = volunteers;
-        //GM.playerList.get(GM.turn).money = money;
-        //GM.playerList.get(GM.turn).pollution = pollution;
-
-        GameManager.getInstance().nextTurn();
+        GameManager.playerList.get(GameManager.turn).useCard(0, money, volunteers);
 
         SoundManager.getInstance().click.play();
+
+        GameManager.getInstance().nextTurn();
     }
 
     @Override

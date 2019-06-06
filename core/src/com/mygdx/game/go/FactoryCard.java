@@ -45,16 +45,14 @@ public class FactoryCard extends GameObject {
     }
 
     public void use(GameStats stats) {
-        //stats.addMoney(money);
-        //stats.addPollution(pollution);
+        // Aquí depende de si afecta a un player o a todos, pero habrá que cambiarlo
+        GameManager.playerList.get(GameManager.turn).useCard(pollution.quantity, money.quantity, volunteers.quantity);
 
-        //GM.playerList.get(GM.turn).volunteers = volunteers;
-        //GM.playerList.get(GM.turn).money = money;
-        //GM.playerList.get(GM.turn).pollution = pollution;
-
-        GameManager.getInstance().nextTurn();
+        // Aquí lo que modifique la bankrupty y la afinidad
 
         SoundManager.getInstance().click.play();
+
+        GameManager.getInstance().nextTurn();
     }
 
     @Override

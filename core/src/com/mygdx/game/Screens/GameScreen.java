@@ -23,13 +23,14 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        controller = ((MyGdxGame)game).controller;
-        renderer = ((MyGdxGame)game).renderer;
+        controller = (game).controller;
+        renderer = (game).renderer;
         GameManager.getInstance().playerList.clear();
         for (int i = 0; i < GameManager.players; i++)
         {
             GameManager.getInstance().playerList.add(new Player());
         }
+        GameManager.getInstance().PlayerTurn();
     }
 
     @Override

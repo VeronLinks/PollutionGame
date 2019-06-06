@@ -27,8 +27,10 @@ public class GameStats extends HUDElement {
 
     @Override
     public void render(SpriteBatch batch) {
-        pollutionLabel.text = "Pollution level: " + currentPlayer.pollution;
-        moneyLabel.text = "Money: " + currentPlayer.money + "$";
-        moneyLabel.text = "Volunteers: " + currentPlayer.volunteers;
+        if (currentPlayer != null) {
+            pollutionLabel.text = "Pollution level: " + currentPlayer.pollution;
+            moneyLabel.text = "Money: " + currentPlayer.money + "$";
+            moneyLabel.text = "Volunteers: " + currentPlayer.volunteers;
+        }
     }
 }
