@@ -43,12 +43,10 @@ public class HUD {
         for (HUDElement he : buttons) {
             he.render(batch);
         }
-        for (HUDElement he : labels) {
-            if (GameManager.players > 1) {
+        if (GameManager.players > 1) {
+            for (HUDElement he : labels) {
                 he.render(batch);
             }
-        }
-        if (GameManager.players > 1) {
             renderPlayerData(batch);
         }
     }
