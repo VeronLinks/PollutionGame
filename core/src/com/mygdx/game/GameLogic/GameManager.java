@@ -1,7 +1,6 @@
 package com.mygdx.game.GameLogic;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.game.Constants;
@@ -11,7 +10,6 @@ import com.mygdx.game.Screens.EndScreen;
 import com.mygdx.game.go.*;
 import com.mygdx.game.hud.GameStats;
 import com.mygdx.game.hud.HUD;
-import com.mygdx.game.hud.TextButton;
 
 import java.util.ArrayList;
 
@@ -31,11 +29,18 @@ public class GameManager
     public static Player currentPlayer;
     public static int startedLastTurn;
     public static int numberOfTurns;
+    public static ArrayList<GameObject> currentSpecialCard;
 
     private static MyGdxGame game;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
+
+    // States for the turns
+    public static int state;
+    public static final int STATE_NONE = 0;
+    public static final int STATE_PLAYER_ACTIONS = 1;
+    public static final int STATE_GAME_ACTIONS = 2;
 
     public static void setGame(MyGdxGame game) {
         GameManager.game = game;
@@ -46,11 +51,13 @@ public class GameManager
         turn = 0;
         numberOfTurns = 1;
         startedLastTurn = 0;
+        state = STATE_NONE;
 
         eFactoryList = new ArrayList<EvilFactory>();
         playerList = new ArrayList<Player>();
         cardsOnBoard = new ArrayList<GameObject>();
         basicActions = new ArrayList<GameObject>();
+        currentSpecialCard = new ArrayList<GameObject>();
 
         for(int i = 0;i < Constants.NUMBER_EVIL_FACTORIES;i++)
         {
@@ -143,17 +150,22 @@ public class GameManager
 
     private void EvilTurn()
     {
+        currentSpecialCard.clear();
+        state = STATE_GAME_ACTIONS;
         for(eFactoryTurn = 0; eFactoryTurn < Constants.NUMBER_EVIL_FACTORIES; eFactoryTurn++)
         {
             if (eFactoryList.get(eFactoryTurn).affinity < Constants.MAX_AFFINITY)
             {
-                // AQUÍ METER LA LLAMADA A LA CARTA DE FACTORÍA Y SU USO
+                currentSpecialCard.add(factory.gimmeRandomFactoryCard());
             }
         }
-        newTurn();
+        // Check somewhere these conditions. If state, thow the cards in currentSpecialCard.
+        // When clicking a card, use and deactivate.
+        // If state & every card is deactivated, then newturn
+        // Same logic with selfcards
     }
 
-    private void newTurn()
+    public void newTurn()
     {
         numberOfTurns = 0;
         startedLastTurn += 1;
@@ -162,15 +174,16 @@ public class GameManager
             startedLastTurn = 0;
         }
         fillBoard();
+        currentSpecialCard.clear();
+        state = STATE_PLAYER_ACTIONS;
         for(int turn = 0; turn < players; turn++)
         {
             if (playerList.get(turn).pollution < Constants.MAX_POLLUTION)
             {
-                factory.gimmeRandomSelfCard().use();
+                currentSpecialCard.add(factory.gimmeRandomSelfCard());
             }
         }
         turn = startedLastTurn;
-        nextTurn();
     }
 
     public void deleteUsedCard(Vector2 position)

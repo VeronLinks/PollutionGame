@@ -46,7 +46,7 @@ public class SelfCard extends GameObject {
 
         GameManager.playerList.get(GameManager.turn).useCard(0, money, volunteers);
 
-        //GameManager.getInstance().nextTurn();
+        active = false;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.mygdx.game.Constants;
+import com.mygdx.game.GameLogic.GameManager;
 import com.mygdx.game.go.Card;
 import com.mygdx.game.go.GameObject;
 import com.mygdx.game.hud.GameStats;
@@ -45,6 +46,35 @@ public class WorldController {
     }
 
     public void update(float dt){
+        actionsStateMachine();
+    }
 
+    private void actionsStateMachine()
+    {
+        switch (GameManager.state)
+        {
+            case GameManager.STATE_GAME_ACTIONS:
+                for (GameObject card : GameManager.currentSpecialCard)
+                {
+                    if (card.active)
+                    {
+                        return;
+                    }
+                }
+                GameManager.state = GameManager.STATE_NONE;
+                GameManager.getInstance().newTurn();
+                break;
+            case GameManager.STATE_PLAYER_ACTIONS:
+                for (GameObject card : GameManager.currentSpecialCard)
+                {
+                    if (card.active)
+                    {
+                        return;
+                    }
+                }
+                GameManager.state = GameManager.STATE_NONE;
+                GameManager.getInstance().nextTurn();
+                break;
+        }
     }
 }

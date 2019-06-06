@@ -56,6 +56,8 @@ public class FactoryCard extends GameObject {
         targetedUse(pollution);
         targetedUse(affinity);
         targetedUse(bankrupty);
+
+        active = false;
     }
 
     private void targetedUse(QuantityTarget qT)

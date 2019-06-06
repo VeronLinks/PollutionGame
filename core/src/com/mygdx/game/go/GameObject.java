@@ -8,6 +8,7 @@ public abstract class GameObject {
 
     public Vector2 position;
     public Vector2 dimension;
+    public boolean active = true;
 
     Vector2 speed;
     private Rectangle bounds;

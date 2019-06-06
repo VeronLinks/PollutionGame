@@ -77,6 +77,14 @@ public class WorldRenderer {
         renderPlayers(batch);
         renderFactoryCardsBar(batch);
         renderFactoriesAndBars(batch);
+        if (GameManager.state != GameManager.STATE_NONE)
+        {
+            for (GameObject go : GameManager.currentSpecialCard) {
+                if (go.active) {
+                    go.render(batch);
+                }
+            }
+        }
         batch.end();
 
         //render HUD
