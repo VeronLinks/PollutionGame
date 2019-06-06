@@ -76,6 +76,7 @@ public class WorldRenderer {
         renderPollutionBar(batch);
         renderPlayers(batch);
         renderFactoryCardsBar(batch);
+        renderFactoriesAndBars(batch);
         batch.end();
 
         //render HUD
@@ -115,7 +116,7 @@ public class WorldRenderer {
         int greenBars = 12;
         int x = (int)(WorldController.camera.viewportWidth/2.55f);
         int y = (int) (-WorldController.camera.viewportHeight/2.3f);
-        int w = (int) WorldController.camera.viewportHeight/10;
+        int w = (int) WorldController.camera.viewportWidth/18;
         int h = (int) WorldController.camera.viewportHeight/35;
         int offset = (int) WorldController.camera.viewportHeight/100;
         batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
@@ -135,7 +136,7 @@ public class WorldRenderer {
         int totalBars = 7;
         int x = (int)(WorldController.camera.viewportWidth/2.55f);
         int y = (int)(WorldController.camera.viewportHeight/5f);
-        int w = (int) WorldController.camera.viewportHeight/10;
+        int w = (int) WorldController.camera.viewportWidth/20;
         int h = (int) WorldController.camera.viewportHeight/35;
         int offset = (int) WorldController.camera.viewportHeight/100;
         batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
@@ -145,6 +146,42 @@ public class WorldRenderer {
             batch.draw(Assets.getInstance().white, x, y+h*i+offset*i, w, h);
             Assets.getInstance().mediumFont.draw(batch, "" + (i+1), x+w/1.3f, y+h*(i+1)+offset*i, w, Align.center, true);
 
+        }
+        batch.setColor(Color.WHITE);
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
+    }
+
+
+    private void renderFactoriesAndBars(SpriteBatch batch){
+
+        int totalFactories = 4;
+        int x = (int)(-WorldController.camera.viewportWidth/2.35f);
+        int y = (int)(WorldController.camera.viewportHeight/3.4f);
+        int w = (int) WorldController.camera.viewportWidth/9;
+        int h = (int) WorldController.camera.viewportHeight/5;
+        int offset = (int) (WorldController.camera.viewportHeight/6f);
+        Assets.getInstance().mediumFont.setColor(Color.BLACK);
+        for(int i=0;i<totalFactories;i++){
+            batch.draw(Assets.getInstance().factoryIcon, x+offset*i+w*i, y, w, h);
+            renderFactoryBars(x+offset*(i)+w*(i+1)+offset/10);
+        }
+        batch.setColor(Color.WHITE);
+        Assets.getInstance().mediumFont.setColor(Color.WHITE);
+    }
+
+    private void renderFactoryBars(int x){
+        int totalBars = 6;
+        int y = (int)(WorldController.camera.viewportHeight/3.4f);
+        int w = (int) WorldController.camera.viewportWidth/48;
+        int h = (int) WorldController.camera.viewportHeight/35;
+        int offset = (int) WorldController.camera.viewportHeight/200;
+        int offsetBar2 = (int) WorldController.camera.viewportHeight/50;
+        batch.draw(Assets.getInstance().black, x-offset, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
+        batch.draw(Assets.getInstance().black, x-offset+offsetBar2+w, y-offset, w+offset*2, h*totalBars+offset*(totalBars+1));
+        Assets.getInstance().mediumFont.setColor(Color.BLACK);
+        for(int i=0;i<totalBars;i++){
+            batch.draw(Assets.getInstance().white, x, y+h*i+offset*i, w, h);
+            batch.draw(Assets.getInstance().white, x+offsetBar2+w, y+h*i+offset*i, w, h);
         }
         batch.setColor(Color.WHITE);
         Assets.getInstance().mediumFont.setColor(Color.WHITE);
