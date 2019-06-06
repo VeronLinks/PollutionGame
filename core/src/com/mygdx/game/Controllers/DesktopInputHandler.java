@@ -38,7 +38,12 @@ public class DesktopInputHandler implements InputController {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(int keycode)
+    {
+        if(keycode == Input.Keys.ESCAPE)
+        {
+            GameManager.isPaused=true;
+        }
 
         return false;
     }

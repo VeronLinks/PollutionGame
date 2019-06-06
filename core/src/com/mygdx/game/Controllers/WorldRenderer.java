@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class WorldRenderer {
 
     private OrthographicCamera camera;
-    private OrthographicCamera hudCamera;
+    private OrthographicCamera hudCamera,pauseCamera;
     private SpriteBatch batch;
 
     private WorldController controller;
     private Background bg = new Background();
-    private HUD hud;
+    private HUD hud,pauseHUD;
     private GameManager GM =GameManager.getInstance();
 
     private Color[] colors = new Color[4];
@@ -35,8 +35,10 @@ public class WorldRenderer {
         batch = new SpriteBatch();
         camera = controller.camera;
         hudCamera = controller.hudCamera;
+        pauseCamera = controller.pauseCamera;
 
         hud = GM.hud;
+        pauseHUD = GameManager.pauseHUD;
 
         colors[0] = new Color(1, 1, 1, 1);
         colors[1] = new Color(1, 0, 0, 1);
@@ -92,6 +94,13 @@ public class WorldRenderer {
         batch.begin();
         hud.render(batch);
         batch.end();
+        if(GameManager.isPaused)
+        {
+            batch.setProjectionMatrix(pauseCamera.combined);
+            batch.begin();
+            pauseHUD.render(batch);
+            batch.end();
+        }
 
     }
 

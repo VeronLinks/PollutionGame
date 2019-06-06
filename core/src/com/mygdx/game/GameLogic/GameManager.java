@@ -10,6 +10,7 @@ import com.mygdx.game.Screens.EndScreen;
 import com.mygdx.game.go.*;
 import com.mygdx.game.hud.GameStats;
 import com.mygdx.game.hud.HUD;
+import com.mygdx.game.hud.TextButton;
 
 import java.util.ArrayList;
 
@@ -24,14 +25,14 @@ public class GameManager
     public static int turn;
     public static int eFactoryTurn;
     public static int players = 1;
-    public static HUD hud;
+    public static HUD hud,pauseHUD;
     public static GameStats gameStats;
     public static Player currentPlayer;
     public static int startedLastTurn;
     public static int numberOfTurns;
     public static ArrayList<GameObject> currentSpecialCard;
-
-    private static MyGdxGame game;
+    public static MyGdxGame game;
+    public static boolean isPaused;
 
     CardFactory factory;
     WorldController WC = WorldController.getInstance();
@@ -48,6 +49,7 @@ public class GameManager
 
     private GameManager()
     {
+        isPaused = false;
         turn = 0;
         numberOfTurns = 1;
         startedLastTurn = 0;
@@ -70,6 +72,8 @@ public class GameManager
         }
 
         hud = new HUD();
+
+        createHUD();
     }
 
     public void gameInit(int numOfPlayers)
@@ -251,5 +255,23 @@ public class GameManager
         gameStats = new GameStats(-WC.hudCamera.viewportWidth/2 + 240 + margin * 2,
                 -WC.hudCamera.viewportHeight/2 + 40 + margin);
         hud.add(gameStats);
+    }
+
+    public void createHUD()
+    {
+        pauseHUD = new HUD();
+        TextButton b1 = new TextButton("Main Menu", 10, 10, 120, 40) {
+            @Override
+            public void click()
+            {
+                game.setScreen(game.menuScreen);
+            }
+        };
+        pauseHUD.add(b1);
+        TextButton b2 = new TextButton("Resume", 200, 10, 120, 40) {
+            @Override
+            public void click() { isPaused = false; }
+        };
+        pauseHUD.add(b2);
     }
 }
