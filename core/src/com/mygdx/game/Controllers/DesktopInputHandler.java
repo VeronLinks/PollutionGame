@@ -90,10 +90,12 @@ public class DesktopInputHandler implements InputController {
                     if (card.active) {
                         if (card instanceof FactoryCard) {
                             ((FactoryCard) card).use();
+                            break;
                         }
                         else if (card instanceof SelfCard)
                         {
                             ((SelfCard) card).use();
+                            break;
                         }
                     }
                 }
