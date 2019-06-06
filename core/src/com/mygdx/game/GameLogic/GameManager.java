@@ -262,7 +262,7 @@ public class GameManager
     public void createPauseHUD()
     {
         pauseHUD = new HUD();
-        TextButton b1 = new TextButton("Main Menu", -150, 10, 120, 40) {
+        TextButton b1 = new TextButton("Main Menu", -150, 10, 150, 40) {
             @Override
             public void click()
             {
