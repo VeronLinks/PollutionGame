@@ -9,8 +9,8 @@ public class EvilFactory extends GameObject
 
     public EvilFactory()
     {
-        affinity = 0;
-        bankruptcy = 0;
+        affinity = 1;
+        bankruptcy = 1;
     }
 
     @Override
