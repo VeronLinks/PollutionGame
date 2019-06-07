@@ -11,7 +11,7 @@ public class DesktopLauncher {
 
 		config.width = LwjglApplicationConfiguration.getDesktopDisplayMode().width/3; //1500;
 		config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height/3; //900;
-		config.fullscreen = true;
+		//config.fullscreen = true;
 
 		new LwjglApplication(new MyGdxGame(), config);
 	}

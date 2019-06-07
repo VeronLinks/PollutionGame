@@ -63,7 +63,9 @@ public class WorldRenderer {
 
         ArrayList<GameObject> gameObjects = GM.cardsOnBoard;
         for(GameObject b : GM.basicActions){
-            gameObjects.add(b);
+            if(!gameObjects.contains(b)){
+                gameObjects.add(b);
+            }
         }
 
         batch.setColor(Color.WHITE);

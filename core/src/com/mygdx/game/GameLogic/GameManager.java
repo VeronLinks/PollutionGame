@@ -256,6 +256,7 @@ public class GameManager
         int y = (int)-WC.camera.viewportHeight/10;
         int offset = (int)(WC.camera.viewportWidth/5.5f);
         cardsOnBoard.clear();
+        basicActions.clear();
         for (int i = 0; i < Constants.MAX_CARDS; i++){
             SelectedCard c = factory.gimmeRandomSelectedCard();
             c.position.x = x + offset*(i%3);
