@@ -74,6 +74,7 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                             }
                             break;
                     }
+                    break;
                 case 9:
                     game.menuScreen.init();
                     GameManager.hud.clear();
