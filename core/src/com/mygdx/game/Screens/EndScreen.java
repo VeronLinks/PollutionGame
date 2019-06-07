@@ -75,9 +75,9 @@ public class EndScreen implements Screen {
         else
         {
             font.draw(batch, "GAME OVER", -camera.viewportWidth / 2, camera.viewportHeight / 3, camera.viewportWidth, Align.center, true);
-            font.draw(batch, "You lost. You fucking loser.", -camera.viewportWidth / 2, -camera.viewportHeight / 3 + 60, camera.viewportWidth, Align.center, true);
-            font.draw(batch, "Go kill yourself or play parchis.", -camera.viewportWidth / 2, -camera.viewportHeight / 3, camera.viewportWidth, Align.center, true);
-            font.draw(batch, "git good or gtfo", -camera.viewportWidth / 2, -camera.viewportHeight / 3 - 80, camera.viewportWidth, Align.center, true);
+            font.draw(batch, "You lost.", -camera.viewportWidth / 2, -camera.viewportHeight / 3 + 60, camera.viewportWidth, Align.center, true);
+            font.draw(batch, "Go play parchis, loser.", -camera.viewportWidth / 2, -camera.viewportHeight / 3, camera.viewportWidth, Align.center, true);
+            font.draw(batch, "Get good.", -camera.viewportWidth / 2, -camera.viewportHeight / 3 - 80, camera.viewportWidth, Align.center, true);
         }
 
         hud.render(batch);
