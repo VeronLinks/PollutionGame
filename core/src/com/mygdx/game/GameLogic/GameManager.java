@@ -1,5 +1,6 @@
 package com.mygdx.game.GameLogic;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
@@ -267,6 +268,9 @@ public class GameManager
             }
             c.init();
             cardsOnBoard.add(c);
+        }
+        for(GameObject ba : factory.basicActions){
+            basicActions.add(ba);
         }
     }
 
