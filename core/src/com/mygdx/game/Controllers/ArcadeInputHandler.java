@@ -55,7 +55,7 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                 case 5:
                     switch (GameManager.state) {
                         case GameManager.STATE_NONE:
-                            ((SelectedCard) (GameManager.cardsOnBoard.get(buttonCode))).use();
+                            ((SelectedCard) (GameManager.cardsOnBoard.get((buttonCode + 3) % 6))).use();
                             return true;
                         case GameManager.STATE_GAME_ACTIONS:
                         case GameManager.STATE_PLAYER_ACTIONS:
@@ -73,8 +73,12 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                                 }
                             }
                             break;
-
                     }
+                case 9:
+                    game.menuScreen.init();
+                    GameManager.hud.clear();
+                    game.setScreen(((MyGdxGame) game).menuScreen);
+                    break;
             }
         }
         else
@@ -86,18 +90,21 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
                     GameManager.hud.clear();
                     GameManager.getInstance().gameInit(2);
                     game.setScreen(((MyGdxGame) game).gameScreen);
+                    break;
                 case 1:
                     SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                     game.menuScreen.playersNumber = 3;
                     GameManager.hud.clear();
                     GameManager.getInstance().gameInit(3);
                     game.setScreen(((MyGdxGame) game).gameScreen);
+                    break;
                 case 2:
                     SoundManager.getInstance().menuClick.play(SoundManager.sfxVolume);
                     game.menuScreen.playersNumber = 4;
                     GameManager.hud.clear();
                     GameManager.getInstance().gameInit(4);
                     game.setScreen(((MyGdxGame) game).gameScreen);
+                    break;
                 case 3:
                 case 4:
                 case 5:
