@@ -136,14 +136,34 @@ public class ArcadeInputHandler implements ControllerListener, InputController {
         {
             //Y axis
             if(axisCode == 0){
-                if(value < -0.9f){
-                    ((BasicAction)(GameManager.basicActions.get(0))).use();
-                    return true;
-                    //Go down
-                }else if(value > 0.9f){
-                    ((BasicAction)(GameManager.basicActions.get(1))).use();
-                    return true;
-                    //Go up
+                switch (GameManager.state) {
+                    case GameManager.STATE_NONE:
+                        if(value < -0.9f){
+                            ((BasicAction)(GameManager.basicActions.get(0))).use();
+                            return true;
+                            //Go down
+                        }else if(value > 0.9f) {
+                            ((BasicAction) (GameManager.basicActions.get(1))).use();
+                            return true;
+                            //Go up
+                        }
+                        break;
+                    case GameManager.STATE_GAME_ACTIONS:
+                    case GameManager.STATE_PLAYER_ACTIONS:
+                        for (GameObject card : GameManager.currentSpecialCard) {
+                            if (card.active) {
+                                if (card instanceof FactoryCard) {
+                                    ((FactoryCard) card).use();
+                                    break;
+                                }
+                                else if (card instanceof SelfCard)
+                                {
+                                    ((SelfCard) card).use();
+                                    break;
+                                }
+                            }
+                        }
+                        break;
                 }
             }
             //X axis
