@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
 public class SoundManager
@@ -10,6 +11,7 @@ public class SoundManager
     public static float sfxVolume, musicVolume;
     public static Sound click, badCard1, badCard2, goodCard1, goodCard2, mainTheme1, mainTheme2, mainMenu, menuClick,
             error;
+    public static Music cumbia;
 
     private SoundManager()
     {
@@ -24,6 +26,7 @@ public class SoundManager
         mainMenu = Gdx.audio.newSound(Gdx.files.internal("Sounds/MainMenu_1.wav"));
         menuClick = Gdx.audio.newSound(Gdx.files.internal("Sounds/YouGotThatClick.wav"));
         error = Gdx.audio.newSound(Gdx.files.internal("Sounds/ErrorSFX.wav"));
+        cumbia = Gdx.audio.newMusic(Gdx.files.internal("Sounds/La_Cumbia.mp3"));
     }
 
     public static SoundManager getInstance()

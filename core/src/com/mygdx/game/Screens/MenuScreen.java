@@ -36,7 +36,8 @@ public class MenuScreen implements Screen {
         batch = new SpriteBatch();
         camera = WorldController.hudCamera;
         hud = GameManager.getInstance().hud;
-
+        SoundManager.cumbia.play();
+        SoundManager.cumbia.setLooping(true);
         init();
     }
 
