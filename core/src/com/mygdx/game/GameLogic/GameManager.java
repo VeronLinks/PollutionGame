@@ -91,11 +91,17 @@ public class GameManager
         numberOfTurns = 1;
         startedLastTurn = 0;
         state = STATE_NONE;
+        numberOfFactoryCards = 4;
 
         playerList.clear();
         for(int i = 0; i < players; i++)
         {
             playerList.add(new Player());
+        }
+        for(EvilFactory f : eFactoryList)
+        {
+            f.bankruptcy = 1;
+            f.affinity = 1;
         }
 
         createMasterDeck();
